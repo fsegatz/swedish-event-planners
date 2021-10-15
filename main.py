@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 def main():
     while True:
         clear()
@@ -29,3 +30,6 @@ def main():
 
 
 main()
+=======
+print("hello")
+>>>>>>> 9be182bcd3cf6136816e24ded995b820459b384f
