@@ -1,18 +1,14 @@
 from ui.login import *
-from models.user import *
-import database
+from ui.mainView import mainView
 
-#currentUser = User(0, 'default', 'default', 'default')
+from models.user import *
+
+import database
 
 def main():
     database.initialize()
     login()
-    print(database.currentUser.position)
-    if database.currentUser.position=='CSO':
-        print("it worked!")
-    else:
-        print("did not work")
-    return
+    mainView()
 
 main()
 
