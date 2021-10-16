@@ -1,13 +1,12 @@
 from datetime import datetime
 
-class SubTeamTask():
-    def __init__(self, event_reference, creation_date, task_description, task_priority, assigned_by, assigned_to):
-        self.event_reference = event_reference
-        self.creation_date=creation_date
-        self.task_description=task_description
-        self.posittask_priorityion=task_priority
-        self.assigned_by=assigned_by
-        self.assigned_to=assigned_to
+# Needed to import rom parent directory
+import sys, os
+testdir = os.path.dirname(__file__)
+parentdir = '..'
+sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
+
+from models.subteamtask import *
 
 def main():
     event_reference = 0
