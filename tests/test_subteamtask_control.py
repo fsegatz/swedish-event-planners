@@ -5,15 +5,12 @@ parentdir = '..'
 sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
 
 from models.subteamtask import *
-
-subTeamTask_List = []
-
-class SubTeamTask_Control:
-    def append(self, subTeamTask):
-        subTeamTask_List.append(subTeamTask)
-        return
+import database
 
 def main():
+    database.initialize()
+    
+    subTeamTask_list_length = len(database.subTeamTask_List)
     subTeamTask_Control = SubTeamTask_Control()
 
     event_reference = 0
@@ -26,7 +23,9 @@ def main():
     new_subteamtask = SubTeamTask(event_reference, creation_date, task_description, task_priority, assigned_by, assigned_to)
 
     subTeamTask_Control.append(new_subteamtask)
-    
+
+    if (subTeamTask_list_length != len(database.subTeamTask_List)):
+        print("test: length of subTeamTask_list changed")
     
     return
 
