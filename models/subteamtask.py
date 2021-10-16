@@ -1,3 +1,4 @@
+from sys import dont_write_bytecode
 import database
 
 class SubTeamTask:
@@ -14,3 +15,15 @@ class SubTeamTask_Control:
         pass
     def append(self, subTeamTask):
         database.subTeamTask_List.append(subTeamTask)
+    def print_list(self):
+        length = len(database.subTeamTask_List)
+        while(length):
+            length -= 1
+            subTeamTask = database.subTeamTask_List[length]
+            print(
+                "|Index: ", length,
+                "|Creation date: ", subTeamTask.creation_date,
+                "|Created by: ", subTeamTask.assigned_by,
+                "|Assigned to: ", subTeamTask.assigned_to,
+                "|Event ref id: ", subTeamTask.event_reference,
+                "|")
