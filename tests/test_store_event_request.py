@@ -8,11 +8,14 @@ testdir = os.path.dirname(__file__)
 parentdir = '..'
 sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
 
+import database
 from models.eventRequest import *
 
 def main():
+    database.initialize()
 
     req=EventRequest()
+    database.eventRequest_List.append(req)
     if req: print("it worked!")
     else: print("it did not work!! :,(")
 

@@ -8,3 +8,6 @@ def initialize():
     global subTeamTask_List
     subTeamTask_List = []
 
+    #Storage for event requests
+    global eventRequest_List
+    eventRequest_List = []

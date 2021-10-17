@@ -1,11 +1,10 @@
 import database
 from ui.stmView import stm_view
+from ui.csoView import cso_view
 
 def mainView():
 
-    if database.currentUser.position=="CSO":
-        #cso_view()
-        pass
+    if database.currentUser.position=="CSO":cso_view()
     elif database.currentUser.position=="SCSO":
         #scso_view()
         pass
