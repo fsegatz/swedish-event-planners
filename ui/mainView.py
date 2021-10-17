@@ -1,4 +1,5 @@
 import database
+from ui.stmView import stm_view
 
 def mainView():
 
@@ -24,7 +25,7 @@ def mainView():
         #hrtm_view()
         pass
     elif database.currentUser.position=="STM":
-        #stm_view()
+        stm_view()
         pass
     else:
         raise NameError('Position has no main view')

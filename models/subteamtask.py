@@ -42,7 +42,10 @@ class SubTeamTask_Control:
     def print_tasklist(self, tasklist):
         print("My Tasks")
         index = 0
-        while(len(tasklist) - index):
+        length = len(tasklist)
+        if (length == 0):
+            print("No Tasks available") 
+        while(length - index):
             subTeamTask = tasklist[index]
             print(
                 "[", index, "] "
