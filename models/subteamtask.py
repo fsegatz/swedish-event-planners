@@ -25,13 +25,10 @@ class SubTeamTask_Control:
         return
 
     def print_list(self):
-        length = len(database.subTeamTask_List)
-        while(length):
-            length -= 1
-            subTeamTask = database.subTeamTask_List[length]
+        for index, ref in enumerate(database.subTeamTask_List):
+            subTeamTask = database.subTeamTask_List[index]
             print(
-                "|ID: ", subTeamTask.id,
-                "|Index: ", length,
+                "|Index: ", index,
                 "|Creation date: ", subTeamTask.creation_date,
                 "|Created by: ", subTeamTask.assigned_by,
                 "|Assigned to: ", subTeamTask.assigned_to,
