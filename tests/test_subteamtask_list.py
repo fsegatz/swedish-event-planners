@@ -19,12 +19,7 @@ def main():
         subTeamTask_Control.append(SubTeamTask(i, datetime.now(), "test", 1, "Fabian", "STM"))
         subTeamTask_Control.append(SubTeamTask(i, datetime.now(), "test", 1, "Fabian", "AM"))
 
-    tasklist = subTeamTask_Control.showItemsForUser(database.currentUser)
-    
-    if (len(tasklist) == loop_var):
-        print("Good job")
-    else:
-        print("Upsi Daisy")
+    subTeamTask_Control.show_subteamtasks_for_currentuser()
 
     return
 
