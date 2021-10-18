@@ -7,8 +7,9 @@ import database
 
 def main():
     database.initialize()
-    login()
-    mainView()
+    while(True):
+        login()
+        mainView()
 
 main()
 
