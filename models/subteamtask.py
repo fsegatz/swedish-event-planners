@@ -1,11 +1,13 @@
 from sys import dont_write_bytecode
 import database
+from clear import clear
+from datetime import datetime
 
 class SubTeamTask:
-    def __init__(self, event_reference, creation_date, task_description, task_priority, assigned_by, assigned_to):
+    def __init__(self, event_reference, task_description, task_priority, assigned_by, assigned_to):
         self.id = ""
         self.event_reference = event_reference
-        self.creation_date=creation_date
+        self.creation_date=datetime.now()
         self.task_description=task_description
         self.priority=task_priority
         self.assigned_by=assigned_by
@@ -40,7 +42,7 @@ class SubTeamTask_Control:
         print("My Tasks")
         if (len(tasklist) == 0):
             print("No Tasks available") 
-        for index, ref in enumerate(database.subTeamTask_List):
+        for index, ref in enumerate(tasklist):
             subTeamTask = tasklist[index]
             print(
                 "[", index, "] "
@@ -62,3 +64,32 @@ class SubTeamTask_Control:
     def show_subteamtasks_for_currentuser(self):
         tasklist = self.get_subteamtasks_for_user(database.currentUser)
         self.print_tasklist(tasklist)
+
+    def create_subteamtask_form(self):
+        clear()
+        print("Please enter folowing subteam task details")
+        event_reference = input("Event reference: ")
+        task_description = input("Description: ")
+        assigned_to = input("Assign to: ")
+
+        while (True):
+            priority = input("Priority (low, medium, high): ")
+            if (priority.lower() == "low"):
+                priority = 1
+            elif (priority.lower() == "medium"):
+                priority = 2
+            elif (priority.lower() == "high"):
+                priority = 3
+            else:
+                print("Only valid priorities are low, medium and high")
+                continue
+            break
+        
+        input("Subteam task request completed! Press enter to send task")
+        subteamTask = SubTeamTask(event_reference, task_description, priority, database.currentUser.username, assigned_to)
+        database.subTeamTask_List.append(subteamTask)
+
+        return subteamTask
+
+
+        
