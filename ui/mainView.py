@@ -1,5 +1,7 @@
 import database
 from ui.stmView import stm_view
+from ui.pmView import pm_view
+from ui.smView import sm_view
 
 def mainView():
 
@@ -16,10 +18,10 @@ def mainView():
         #fm_view()
         pass
     elif database.currentUser.position=="SM":
-        #sm_view()
+        sm_view()
         pass
     elif database.currentUser.position=="PM":
-        #pm_view()
+        pm_view()
         pass
     elif database.currentUser.position=="HRTM":
         #hrtm_view()
