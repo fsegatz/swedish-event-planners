@@ -1,5 +1,3 @@
-from datetime import datetime
-
 # Needed to import rom parent directory
 import sys, os
 testdir = os.path.dirname(__file__)
@@ -16,8 +14,8 @@ def main():
 
     subTeamTask_Control = SubTeamTask_Control()
     for i in range(loop_var):
-        subTeamTask_Control.append(SubTeamTask(i, datetime.now(), "test", 1, "Fabian", "STM"))
-        subTeamTask_Control.append(SubTeamTask(i, datetime.now(), "test", 1, "Fabian", "AM"))
+        subTeamTask_Control.append(SubTeamTask(i, "test", 1, "Fabian", "STM"))
+        subTeamTask_Control.append(SubTeamTask(i, "test", 1, "Fabian", "AM"))
 
     subTeamTask_Control.show_subteamtasks_for_currentuser()
 
