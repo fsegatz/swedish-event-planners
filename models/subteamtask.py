@@ -38,11 +38,9 @@ class SubTeamTask_Control:
 
     def print_tasklist(self, tasklist):
         print("My Tasks")
-        index = 0
-        length = len(tasklist)
-        if (length == 0):
+        if (len(tasklist) == 0):
             print("No Tasks available") 
-        while(length - index):
+        for index, ref in enumerate(database.subTeamTask_List):
             subTeamTask = tasklist[index]
             print(
                 "[", index, "] "
@@ -51,15 +49,12 @@ class SubTeamTask_Control:
                 " | Assigned by: ", subTeamTask.assigned_by,
                 " | Task description: ", subTeamTask.task_description,
                 " |")
-            index += 1
         return
 
     def get_subteamtasks_for_user(self, user):
         tasklist = []
-        length = len(database.subTeamTask_List)
-        while(length):
-            length -= 1
-            subTeamTask = database.subTeamTask_List[length]
+        for index, ref in enumerate(database.subTeamTask_List):
+            subTeamTask = database.subTeamTask_List[index]
             if (subTeamTask.assigned_to == user.username):
                 tasklist.append(subTeamTask)
         return tasklist
