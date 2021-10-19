@@ -22,7 +22,7 @@ def main():
     start_date = "2021-12-24 10:00"
     end_date = "2021-12-24 20:00"
 
-    eventplanning = EventPlanning(client_record_number, client_name, description, expected_attendees, planned_budget, start_date, end_date)
+    eventplanning = EventPlanning(client_record_number, client_name, event_type, description, expected_attendees, planned_budget, start_date, end_date)
 
     if( eventplanning.event_type == event_type):
         print("EventPlanning was created at", eventplanning.creation_date)
