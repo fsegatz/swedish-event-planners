@@ -26,15 +26,15 @@ def main():
     # Login as subteam member and change to a task
     database.currentUser.username="STM"
     tasklist = subTeamTask_Control.show_subteamtasks_for_currentuser()
-    
-    subTeamTask = tasklist[1]
-    subTeamTask_Control.change_subteamtask_comment_form(subTeamTask)
 
-    # login as user who subteamtask was assigned to
-    database.currentUser.username = subTeamTask.assigned_to
-    print("\nLogin as user who subteamtak was assigned to: ", database.currentUser.username, "\n")
-    subTeamTask_Control.show_subteamtasks_for_currentuser()
-    
+    subteamtask = subTeamTask_Control.select_subteamtask_from_tasklist_to_comment(tasklist)
+
+    if (subteamtask != None):
+        # login as user who subteamtask was assigned to
+        database.currentUser.username = subteamtask.assigned_to
+        print("\nLogin as user who subteamtak was assigned to: ", database.currentUser.username, "\n")
+        subTeamTask_Control.show_subteamtasks_for_currentuser()
+        
     return
     
 main()

@@ -54,6 +54,7 @@ class SubTeamTask_Control:
                 " | Task description: ", subTeamTask.task_description,
                 " | Comment: ", subTeamTask.comment,
                 " |")
+        print("")
         return
 
     def get_subteamtasks_for_user(self, user):
@@ -95,24 +96,25 @@ class SubTeamTask_Control:
 
         return subteamTask
 
-    def change_subteamtask_comment_form(self, subteamTask):
+    def change_subteamtask_comment_form(self, subteamtask):
         #search for subteamtask in db with same id
         for index, ref in enumerate(database.subTeamTask_List):
             buf = database.subTeamTask_List[index]
-            if (subteamTask.id == buf.id):
+            if (subteamtask.id == buf.id):
                 break
 
+        clear()
         print("Subteam task comment form.")
         while(True):
             database.subTeamTask_List[index].comment = input("Please enter comment: ")
             while(True):
-                done = input("Is comment correct? (Y/N)")
+                done = input("Is comment correct? (y/n)")
                 if (done.lower() == "y"):
                     done = "y"
                 elif (done.lower() == "n"):
                     done = "n"
                 else:
-                   print("Only valid priorities are Y (Yes) and N (No)")
+                   print("Only valid priorities are y (Yes) and n (No)")
                    continue 
                 break
             if(done == "n"):
@@ -120,3 +122,24 @@ class SubTeamTask_Control:
             break
         database.subTeamTask_List[index].status == "commented"
         return
+
+    def select_subteamtask_from_tasklist_to_comment(self, tasklist):
+        clear()
+        self.print_tasklist(tasklist)
+        while(True):
+            index = input("Enter index of subteam task that should be commented, or c to cancel: ")
+            if(index.lower() == 'c'):
+                return 
+            elif (index.isnumeric()):
+                if(int(index) < len(tasklist) ):
+                    subteamtask = tasklist[int(index)]
+                    self.change_subteamtask_comment_form(subteamtask)
+                else:
+                    print("Index is out of bound")
+                    continue
+            else:
+                print("No valid input")
+                continue
+            break
+        return subteamtask
+
