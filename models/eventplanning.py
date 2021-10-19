@@ -1,4 +1,6 @@
+import database
 from datetime import datetime
+
 
 class EventPlanning:
     def __init__(self, client_record_number, client_name, event_type, description, expected_attendees, planned_budget, start_date, end_date):
@@ -22,4 +24,14 @@ class EventPlanning:
         self.feasibility_review = ""
         self.financial_review  = ""
         self.status = ""
+        return
+
+class EventPlanning_Control:
+    def append(self, eventplanning):
+        length = len(database.eventPlanning_List)
+        if (length == 0):
+            eventplanning.id = 1
+        else:
+            eventplanning.id = database.eventPlanning_List[length-1].id + 1
+        database.eventPlanning_List.append(eventplanning)
         return
