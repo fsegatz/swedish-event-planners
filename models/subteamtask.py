@@ -12,6 +12,8 @@ class SubTeamTask:
         self.priority=task_priority
         self.assigned_by=assigned_by
         self.assigned_to=assigned_to
+        self.comment= ""
+        self.status= "new"
 
 class SubTeamTask_Control:
     def __init__(self):
@@ -50,6 +52,7 @@ class SubTeamTask_Control:
                 " | Priority: ", subTeamTask.priority,
                 " | Assigned by: ", subTeamTask.assigned_by,
                 " | Task description: ", subTeamTask.task_description,
+                " | Comment: ", subTeamTask.comment,
                 " |")
         return
 
@@ -64,6 +67,7 @@ class SubTeamTask_Control:
     def show_subteamtasks_for_currentuser(self):
         tasklist = self.get_subteamtasks_for_user(database.currentUser)
         self.print_tasklist(tasklist)
+        return tasklist
 
     def create_subteamtask_form(self):
         clear()
@@ -91,5 +95,5 @@ class SubTeamTask_Control:
 
         return subteamTask
 
-
-        
+    def change_subteamtask_comment_form(self, subteamtask):
+        return
