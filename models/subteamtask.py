@@ -13,7 +13,7 @@ class SubTeamTask:
         self.assigned_by=assigned_by
         self.assigned_to=assigned_to
         self.comment= ""
-        self.status= "new"
+        self.status= "new"      #<--status can be [new; commented]
 
 class SubTeamTask_Control:
     def __init__(self):
@@ -95,5 +95,28 @@ class SubTeamTask_Control:
 
         return subteamTask
 
-    def change_subteamtask_comment_form(self, subteamtask):
+    def change_subteamtask_comment_form(self, subteamTask):
+        #search for subteamtask in db with same id
+        for index, ref in enumerate(database.subTeamTask_List):
+            buf = database.subTeamTask_List[index]
+            if (subteamTask.id == buf.id):
+                break
+
+        print("Subteam task comment form.")
+        while(True):
+            database.subTeamTask_List[index].comment = input("Please enter comment: ")
+            while(True):
+                done = input("Is comment correct? (Y/N)")
+                if (done.lower() == "y"):
+                    done = "y"
+                elif (done.lower() == "n"):
+                    done = "n"
+                else:
+                   print("Only valid priorities are Y (Yes) and N (No)")
+                   continue 
+                break
+            if(done == "n"):
+                continue
+            break
+        database.subTeamTask_List[index].status == "commented"
         return
