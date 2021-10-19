@@ -125,6 +125,9 @@ class SubTeamTask_Control:
 
     def select_subteamtask_from_tasklist_to_comment(self, tasklist):
         clear()
+        if(len(tasklist) == 0):
+            return
+
         self.print_tasklist(tasklist)
         while(True):
             index = input("Enter index of subteam task that should be commented, or c to cancel: ")

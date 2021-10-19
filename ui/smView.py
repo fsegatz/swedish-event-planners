@@ -2,7 +2,7 @@ from clear import clear
 from models.subteamtask import *
 import time
 
-def pm_view():
+def sm_view():
     while(True):
         clear()
         print("Service Manager Main View")
