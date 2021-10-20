@@ -5,6 +5,10 @@ def initialize():
     global currentUser 
     currentUser = User(0, 'default', 'default', 'default')
 
+    #Counter to ensure new id to all instances
+    global id_counter
+    id_counter=Id_counter() 
+    
     #Storage for subteam tasks
     global subTeamTask_List
     subTeamTask_List = []
@@ -12,7 +16,7 @@ def initialize():
     #Storage for event requests
     global eventRequest_List
     eventRequest_List = []
-
-     #Counter to ensure new id to all instances
-    global id_counter
-    id_counter=Id_counter() 
+    
+    #Storage for event plannings
+    global eventPlanning_List
+    eventPlanning_List = []

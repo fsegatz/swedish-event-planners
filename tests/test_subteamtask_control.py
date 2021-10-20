@@ -1,4 +1,3 @@
-from datetime import datetime
 import time
 
 # Needed to import rom parent directory
@@ -18,14 +17,13 @@ def main():
 
     for i in range(5):
         event_reference = 0
-        creation_date = datetime.now()
         task_description = "This is a task description"
         task_priority = 1
         assigned_by = "currentUser"
         assigned_to = "User xy"
         
-        subTeamTask_Control.append(SubTeamTask(event_reference, creation_date, task_description, task_priority, assigned_by, assigned_to))
-        time.sleep(1)
+        subTeamTask_Control.append(SubTeamTask(event_reference, task_description, task_priority, assigned_by, assigned_to))
+        time.sleep(0.1)
 
     if (subTeamTask_list_length != len(database.subTeamTask_List)):
         print("test: length of subTeamTask_list changed")
