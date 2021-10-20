@@ -1,4 +1,5 @@
 from models.user import *
+from id_counter import Id_counter
 
 def initialize(): 
     global currentUser 
@@ -11,3 +12,7 @@ def initialize():
     #Storage for event requests
     global eventRequest_List
     eventRequest_List = []
+
+     #Counter to ensure new id to all instances
+    global id_counter
+    id_counter=Id_counter() 
