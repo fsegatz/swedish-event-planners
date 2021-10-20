@@ -35,3 +35,6 @@ class EventPlanning_Control:
             eventplanning.id = database.eventPlanning_List[length-1].id + 1
         database.eventPlanning_List.append(eventplanning)
         return
+
+    def show_current_eventplannings(self):
+        return
