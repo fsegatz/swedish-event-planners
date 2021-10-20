@@ -57,3 +57,15 @@ class EventRequest_control():
         e.add_info_test(atributes)
         database.eventRequest_List.append(e)
         #database.eventRequest_List.append(EventRequest(database.id_counter.get_new()).add_info_test(atributes))
+
+    def show_event_request_for_user(self):
+        clear()
+        print("All event requests that are waiting on review")
+        print(*[req.get_id() for req in database.eventRequest_List if req and req.get_assigned2()==database.currentUser.position])
+        input("Press enter to continue")
+
+    def create_eventRequest_test(self,atributes):
+        e=EventRequest(database.id_counter.get_new())
+        e.add_info_test(atributes)
+        database.eventRequest_List.append(e)
+        #database.eventRequest_List.append(EventRequest(database.id_counter.get_new()).add_info_test(atributes))
