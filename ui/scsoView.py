@@ -26,8 +26,13 @@ def scso_view():
                 print("All event requests that are waiting on review")
                 event_requests=eventRequest_control.get_event_request_for_user()
                 print(*event_requests)
-                key=input("Press id of event request to review or [0] to go back: ")
-                if key == "0":break
+                req_id=input("Press id of event request to review or [0] to go back: ")
+                if req_id == "0":break
+                elif req_id in event_requests:
+                    key=input("Enter feasbilty review or [0] to go back: ")
+                    if key=="0":pass
+                    else:eventRequest_control.add_review(id=req_id, review=key)
+                    
 
         elif key=="2":
             return

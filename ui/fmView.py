@@ -17,9 +17,22 @@ def fm_view():
         key=input()
         
         if key=="1":
-            try:eventRequest_control
-            except:eventRequest_control=EventRequest_control()
-            eventRequest_control.show_event_request_for_user()
+            while True:
+                try:eventRequest_control
+                except:eventRequest_control=EventRequest_control()
+
+                clear()
+                print("All event requests that are waiting on review")
+                event_requests=eventRequest_control.get_event_request_for_user()
+                print(*event_requests)
+                req_id=input("Press id of event request to review or [0] to go back: ")
+                if req_id == "0":break
+                elif req_id in event_requests:
+                    key=input("Enter financial review or [0] to go back: ")
+                    if key=="0":pass
+                    else:eventRequest_control.add_review(id=req_id, review=key)
+                    
+
 
         elif key=="2":
             return
