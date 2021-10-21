@@ -15,7 +15,7 @@ database.currentUser.position = 'SCSO'
 
 atributes=[1,"Skynet","Doomsday","nine billion", 100000, 2022-10-12, 3048-10-12, "Destruction!", "Open"]
 eventRequest_control=EventRequest_control()
-eventRequest_control.create_eventRequest_test(atributes)
+eventRequest_control.create_eventRequest(atributes)
 
 
-eventRequest_control.show_event_request_for_user()
+print(*eventRequest_control.get_event_request_for_user())

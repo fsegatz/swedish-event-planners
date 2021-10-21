@@ -11,26 +11,12 @@ class EventRequest():
 
     def __init__(self,id):
         self.__id=id
-    def add_info(self):
+        
+    def add_info(self, atributes):
         self.__feasibility_review=None
         self.__financial_review=None
         self.__assigned2="SCSO"
 
-        clear()
-        print("Please enter folowing details about the Request")
-        self.__client_record_number=input("Client record number: ")
-        self.__client_name=input("Client_name: ")
-        self.__event_type=input("Event_type: ")
-        self.__expected_number_attendees=input("Expected number attendees: ")
-        self.__expected_budget=input("Expected budget: ")
-        self.__start_date=input("Start date: ")
-        self.__end_date=input("End date: ")
-        self.__priorities=input("Priorities: ")
-        self.__status=input("Status: ")
-        input("Event request completed! Press enter to continue")
-
-    def add_info_test(self, atributes):
-        self.__assigned2="SCSO"
         self.__client_record_number=atributes[0]
         self.__client_name=atributes[1]
         self.__event_type=atributes[2]
@@ -47,22 +33,12 @@ class EventRequest():
     def get_assigned2(self):return self.__assigned2
 
 class EventRequest_control():
-    def create_eventRequest(self):
+    def create_eventRequest(self,atributes):
         e=EventRequest(database.id_counter.get_new())
-        e.add_info()
+        e.add_info(atributes)
         database.eventRequest_List.append(e)
 
-    def create_eventRequest_test(self,atributes):
-        e=EventRequest(database.id_counter.get_new())
-        e.add_info_test(atributes)
-        database.eventRequest_List.append(e)
-        #database.eventRequest_List.append(EventRequest(database.id_counter.get_new()).add_info_test(atributes))
-
-    def show_event_request_for_user(self):
-        clear()
-        print("All event requests that are waiting on review")
-        print(*[req.get_id() for req in database.eventRequest_List if req and req.get_assigned2()==database.currentUser.position])
-        input("Press enter to continue")
+    def get_event_request_for_user(self): return [req.get_id() for req in database.eventRequest_List if req and req.get_assigned2()==database.currentUser.position]
 
     def create_eventRequest_test(self,atributes):
         e=EventRequest(database.id_counter.get_new())
