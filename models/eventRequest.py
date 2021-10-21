@@ -42,6 +42,6 @@ class EventRequest_control():
 
     def create_eventRequest_test(self,atributes):
         e=EventRequest(database.id_counter.get_new())
-        e.add_info_test(atributes)
+        e.add_info(atributes)
         database.eventRequest_List.append(e)
-        #database.eventRequest_List.append(EventRequest(database.id_counter.get_new()).add_info_test(atributes))
+
