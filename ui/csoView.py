@@ -28,10 +28,9 @@ Customer Support Officer Main View\n\
             start_date=input("Start date: ")
             end_date=input("End date: ")
             priorities=input("Priorities: ")
-            status=input("Status: ")
 
             atributes=[client_record_number, client_name, event_type, expected_number_attendees, \
-            expected_budget, start_date, end_date, priorities, status]
+            expected_budget, start_date, end_date, priorities]
 
             try:eventRequest_control
             except:eventRequest_control=EventRequest_control()
