@@ -14,7 +14,7 @@ from models.eventRequest import *
 def main():
     database.initialize()
 
-    req=EventRequest(1)
+    req=EventRequest(database.id_counter.get_new())
     database.eventRequest_List.append(req)
     if req in database.eventRequest_List: print("it worked!")
     else: print("it did not work!! :,(")
