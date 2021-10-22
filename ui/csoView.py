@@ -1,14 +1,7 @@
-import sys, os
-
 from models.eventRequest import EventRequest_control
-testdir = os.path.dirname(__file__)
-parentdir = '..'
-sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
-
-
 from clear import clear
 
-class CustomerSupportOfficerView():
+class CustomerServiceOfficerView:
     def __init__(self):
         self.eventRequest_control=EventRequest_control()
         while True:
@@ -20,7 +13,7 @@ class CustomerSupportOfficerView():
 
     def start_view(self): 
         clear()
-        print("Customer Support Officer Main View")
+        print("Customer Service Officer Main View")
         print("------------------------")
         print("[1] Create Event Request")
         print("[2] Logout")

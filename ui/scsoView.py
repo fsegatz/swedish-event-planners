@@ -1,31 +1,24 @@
-import sys, os
-
-testdir = os.path.dirname(__file__)
-parentdir = '..'
-sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
-
 from models.eventRequest import EventRequest_control
 from models.eventplanning import *
 from clear import clear 
 
-class ScsoView():
+class SeniorCustomerServiceOfficerView:
     def __init__(self):
         self.eventRequest_control=EventRequest_control()
         self.eventPlanning_Control=EventPlanning_Control()
 
         while True:
             key=self.start_view()
-            if key=="1": self.show_event_requests()
+            if key=="0": break
+
+            elif key=="1": self.show_event_requests()
 
             elif key=="2": self.create_event_plan()
-
-            elif key=="0": return
-                
+  
             elif key=="test":
                 atributes=[69,"Skynet","Doomsday","nine billion human lifes", 100000, 2022-10-12, 3048-10-12, "Destruction!"]
-                try:self.eventRequest_control
-                except:self.eventRequest_control=EventRequest_control()
                 self.eventRequest_control.create_eventRequest(atributes)
+        return
             
     def start_view(self):
         clear()
@@ -46,9 +39,10 @@ class ScsoView():
             if req_id == "0":break
             elif req_id in event_requests:
                 key=input("Enter feasbilty review or [0] to go back: ")
-                
+
                 if not key=="0":self.eventRequest_control.add_review(id=req_id, review=key)
         return
+
     def create_event_plan(self):
         while True:
             clear()
@@ -56,7 +50,7 @@ class ScsoView():
             event_requests=self.eventRequest_control.get_finalized_event_request()
             print(*event_requests)
             req_id=input("Press id of event request to create event plan from or press [0] to go back: ")
-            if req_id == "0":break
+            if req_id == "0": break
             elif req_id in event_requests:
                 clear()
                 print("Are you sure that you want to create event plan from event request " + req_id + " it will not be possible to undo")
@@ -70,3 +64,4 @@ class ScsoView():
                     eventplanning=EventPlanning(event_request_data[0], event_request_data[1], event_request_data[2], event_request_data[3], event_request_data[4], event_request_data[5], event_request_data[6], event_request_data[7])
                     #this should probobly be done in the control object not in boundary to keep more seperated 
                     self.eventPlanning_Control.append(eventplanning)
+        return
