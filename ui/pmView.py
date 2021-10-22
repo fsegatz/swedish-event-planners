@@ -3,24 +3,35 @@ from models.eventplanning import EventPlanning_Control
 from models.subteamtask import *
 import time
 
-def pm_view():
-    while(True):
+class ProductionManagerView():
+    def __init__(self):
+        while(True):
+            key = self.start_view()
+
+            if(key == '0'): break
+
+            if(key == '1'): self.create_subteam_task()
+
+            if(key == '2'): self.show_current_events()
+            
+        return
+
+    def start_view(self):
         clear()
         print("Production Manager Main View")
         print("------------------------")
         print("[0] Logout")
         print("[1] Create subteam task")
         print("[2] Show current events")
-        option = input("Please choose option: ")
-        if(option == '0'):
-            break
-        if(option == '1'):
-            clear()
-            subTeamTask_Control = SubTeamTask_Control()
-            tmp = subTeamTask_Control.create_subteamtask_form()
-        if(option == '2'):
-            clear()
-            eventPlanning_Control = EventPlanning_Control()
-            tmp = eventPlanning_Control.show_current_eventplannings()
-            input('Press enter to return') #temporary before adding functionality
-    return
+        return input("Please choose option: ")
+        
+    def create_subteam_task(self):
+        clear()
+        subTeamTask_Control = SubTeamTask_Control()
+        subTeamTask_Control.create_subteamtask_form()
+
+    def show_current_events(self):
+        clear()
+        eventPlanning_Control = EventPlanning_Control()
+        eventPlanning_Control.show_current_eventplannings()
+        input('Press enter to return') #temporary before adding functionality
