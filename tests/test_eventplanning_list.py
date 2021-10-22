@@ -26,7 +26,6 @@ def main():
         
         eventplanning_Control.append(EventPlanning(client_record_number, client_name, event_type, description, expected_attendees, planned_budget, start_date, end_date))
 
-
     eventplanning_Control.show_current_eventplannings()
 
     return
