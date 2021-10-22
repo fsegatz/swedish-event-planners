@@ -21,8 +21,6 @@ class EventPlanning:
         self.info_graphic = ""
         self.info_technical = ""
         self.info_other = ""
-        self.feasibility_review = ""
-        self.financial_review  = ""
         self.status = ""
         return
 
@@ -35,3 +33,40 @@ class EventPlanning_Control:
             eventplanning.id = database.eventPlanning_List[length-1].id + 1
         database.eventPlanning_List.append(eventplanning)
         return
+
+    def print_eventplannings_list(self, eventplannings_list):
+        print("Current Events")
+        if (len(eventplannings_list) == 0):
+            print("No Event available") 
+        for index, ref in enumerate(eventplannings_list):
+            eventplanning = eventplannings_list[index]
+            print(
+                "[", index, "] "
+                " | Client name: ", eventplanning.client_name,
+                " | Event type: ", eventplanning.event_type,
+                " | Event description: ", eventplanning.description,
+                " |\n"
+                " | Date: ", eventplanning.start_date, " - ", eventplanning.end_date,
+                " | Budget: ", eventplanning.planned_budget,
+                " | Attendees: ", eventplanning.expected_attendees,
+                " |\n"
+                " | Decoration: ", eventplanning.info_decoration,
+                " | Catering: ", eventplanning.info_catering,
+                " | Documentation: ", eventplanning.info_documentation,
+                " | Music: ", eventplanning.info_music,
+                " | Graphics: ", eventplanning.info_graphic,
+                " | Technical: ", eventplanning.info_technical,
+                " | Other: ", eventplanning.info_other,
+                " |\n"
+                )
+        print("")
+        return
+
+    def show_current_eventplannings(self):
+        eventplannings_list = []
+        for index, ref in enumerate(database.eventPlanning_List):
+            eventplanning = database.eventPlanning_List[index]
+            if (eventplanning.status != "archived"):
+                eventplannings_list.append(eventplanning)
+        self.print_eventplannings_list(eventplannings_list)
+        return eventplannings_list
