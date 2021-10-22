@@ -78,7 +78,8 @@ class EventRequest_control():
         for i,req in enumerate(database.eventRequest_List):
             if req.get_id()==id: 
                 req.set_status("Rejected")
-                database.eventRequest_List.pop(i)
+                req.set_assigned2("")
+                #database.eventRequest_List.pop(i)
                 return
 
     def finalize_event_request(self, id):
@@ -86,8 +87,11 @@ class EventRequest_control():
         requests[0].set_status("Finalized")
         requests[0].set_assigned2("")
 
-    def create_eventRequest_test(self,atributes):
-        e=EventRequest(database.id_counter.get_new())
-        e.add_info(atributes)
-        database.eventRequest_List.append(e)
-
+    def get_info_for_event_plan(self, id): return [req.get_all_data() for req in database.eventRequest_List if req.get_id()==id][0]
+    def delete_event_request(self, id): 
+        for i,req in enumerate(database.eventRequest_List):
+            if req.get_id()==id: 
+                req.set_status("Turned to event plan")
+                req.set_assigned2("")
+                #database.eventRequest_List.pop(i)
+                return
