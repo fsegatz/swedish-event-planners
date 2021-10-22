@@ -11,7 +11,7 @@ class EventRequest():
 
     def __init__(self,id):
         self.__id=id
-        
+
     def add_info(self, atributes):
         self.__feasibility_review=None
         self.__financial_review=None
@@ -30,7 +30,13 @@ class EventRequest():
     def get_id(self):return self.__id
     def get_name(self):return self.__id
     def get_feasabilty_review(self): return self.__feasibility_review
+    def get_financial_review(self, review):return self.__financial_review
     def get_assigned2(self):return self.__assigned2
+
+    def set_feasabilty_review(self, review):self.__feasibility_review=review
+    def set_financial_review(self, review):self.__financial_review=review
+    def set_assigned2(self, user): self.__assigned2=user
+
 
 class EventRequest_control():
     def create_eventRequest(self,atributes):
@@ -38,10 +44,22 @@ class EventRequest_control():
         e.add_info(atributes)
         database.eventRequest_List.append(e)
 
-    def get_event_request_for_user(self): return [req.get_id() for req in database.eventRequest_List if req and req.get_assigned2()==database.currentUser.position]
+    def get_event_request_for_user(self): return [str(req.get_id()) for req in database.eventRequest_List if req and req.get_assigned2()==database.currentUser.position]
+    
+    def add_review(self, id, review): 
+        requests=[req for req in database.eventRequest_List if req.get_id()==int(id)]
+        
+        if database.currentUser.position=="SCSO":
+            requests[0].set_feasabilty_review(review)
+            requests[0].set_assigned2("FM")
+        
+        elif database.currentUser.position=="FM":
+            requests[0].set_financial_review(review)
+            requests[0].set_assigned2("AM")
+        
 
     def create_eventRequest_test(self,atributes):
         e=EventRequest(database.id_counter.get_new())
-        e.add_info_test(atributes)
+        e.add_info(atributes)
         database.eventRequest_List.append(e)
-        #database.eventRequest_List.append(EventRequest(database.id_counter.get_new()).add_info_test(atributes))
+
