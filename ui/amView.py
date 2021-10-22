@@ -26,29 +26,31 @@ def am_view():
                 event_requests=eventRequest_control.get_event_request_for_user()
                 print(*event_requests)
                 req_id=input("Press id of event request to finalize/reject or [0] to go back: ")
-
                 if req_id == "0":break
                 elif req_id in event_requests:
-
-                    clear()
-                    print("Event request " + req_id )
-                    feasabilty_review, financial_review = eventRequest_control.get_reviews_from_event_request(id=req_id)
-                    print("Financial review: " + financial_review)
-                    print("")
-                    print("[1] Finalize event request")
-                    print("[2] Reject event request")
-                    print("[0] Go back")
-                    key=input("")
-
-                    if key=="0":pass
-                    elif key=="1": eventRequest_control.finalize_event_request(id=req_id)
-                    elif key=="2":
+                    while True:
                         clear()
-                        print("Are you sure that you want reject event request " + req_id + " it will not be possible to get back")
-                        print("[1] Yes, reject this event request")
-                        print("[2] No, do not reject")
+                        print("Event request " + req_id )
+                        feasabilty_review, financial_review = eventRequest_control.get_reviews_from_event_request(id=req_id)
+                        print("Financial review: " + financial_review)
+                        print("")
+                        print("[1] Finalize event request")
+                        print("[2] Reject event request")
+                        print("[0] Go back")
                         key=input("")
-                        if key=="1": eventRequest_control.reject_event_request(id=req_id)
+
+                        if key=="0":break
+                        elif key=="1": 
+                            eventRequest_control.finalize_event_request(id=req_id)
+                            break
+                        elif key=="2":
+                            clear()
+                            print("Are you sure that you want reject event request " + req_id + " it will not be possible to get back")
+                            print("[1] Yes, reject this event request")
+                            print("[2] No, do not reject")
+                            key=input("")
+                            if key=="1": eventRequest_control.reject_event_request(id=req_id)
+                            break
                     
         elif key=="2": return
         elif key=="test":
