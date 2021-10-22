@@ -45,8 +45,19 @@ class EventRequest_control():
         e.add_info(atributes, assigned2, status, feasibility_review, financial_review)
         database.eventRequest_List.append(e)
 
-    def get_event_request_for_user(self): return [req.get_id() for req in database.eventRequest_List if req and req.get_assigned2()==database.currentUser.position]
-
+    def get_event_request_for_user(self): return [str(req.get_id()) for req in database.eventRequest_List if req and req.get_assigned2()==database.currentUser.position]
+    
+    def add_review(self, id, review): 
+        requests=[req for req in database.eventRequest_List if req.get_id()==int(id)]
+        
+        if database.currentUser.position=="SCSO":
+            requests[0].set_feasabilty_review(review)
+            requests[0].set_assigned2("FM")
+        
+        elif database.currentUser.position=="FM":
+            requests[0].set_financial_review(review)
+            requests[0].set_assigned2("AM")
+        
     def get_reviews_from_event_request(self, id):
         for req in database.eventRequest_List:
             if req.get_id()==id:
@@ -64,17 +75,11 @@ class EventRequest_control():
             requests[0].set_assigned2("AM")
 
     def reject_event_request(self, id):
-        #request=[i for i,req in enumerate(database.eventRequest_List) if req.get_id()==id]
         for i,req in enumerate(database.eventRequest_List):
             if req.get_id()==id: 
                 req.set_status("Rejected")
                 database.eventRequest_List.pop(i)
                 return
-        # input(request[0])
-        # e=database.eventRequest_List(int(request[0]))
-        # e.set_status("Rejected")
-        # database.eventRequest_List.pop(request[0])
-
 
     def finalize_event_request(self, id):
         requests=[req for req in database.eventRequest_List if req.get_id()==id]
@@ -85,4 +90,4 @@ class EventRequest_control():
         e=EventRequest(database.id_counter.get_new())
         e.add_info(atributes)
         database.eventRequest_List.append(e)
-        #database.eventRequest_List.append(EventRequest(database.id_counter.get_new()).add_info_test(atributes))
+
