@@ -38,7 +38,7 @@ def scso_view():
             return
             
         elif key=="test":
-            atributes=[database.id_counter.get_new(),"Skynet","Doomsday","nine billion", 100000, 2022-10-12, 3048-10-12, "Destruction!", "Open"]
+            atributes=[69,"Skynet","Doomsday","nine billion human lifes", 100000, 2022-10-12, 3048-10-12, "Destruction!"]
             try:eventRequest_control
             except:eventRequest_control=EventRequest_control()
             eventRequest_control.create_eventRequest(atributes)
