@@ -3,14 +3,14 @@ from ui.stmView import stm_view
 from ui.csoView import cso_view
 from ui.pmView import pm_view
 from ui.smView import sm_view
-from ui.scsoView import scso_view
+from ui.scsoView import ScsoView
 from ui.fmView import fm_view
 from ui.amView import am_view
 
 def mainView():
 
     if database.currentUser.position=="CSO":cso_view()
-    elif database.currentUser.position=="SCSO":scso_view()
+    elif database.currentUser.position=="SCSO":ScsoView()
     elif database.currentUser.position=="AM":am_view()
     elif database.currentUser.position=="FM":fm_view()
 
