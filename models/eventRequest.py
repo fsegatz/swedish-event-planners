@@ -49,7 +49,7 @@ class EventRequest_control():
 
     def get_finalized_event_request(self): return [req.get_id() for req in database.eventRequest_List if req and req.get_status()=="Finalized"]
     def get_event_request_for_user(self): return [req.get_id() for req in database.eventRequest_List if req and req.get_assigned2()==database.currentUser.position]
-    def get_event_request_from_id(self,id):return [req for req in database.eventRequest_List if req and req.get_id()==id][0]
+    def get_event_request_from_id(self,id): return [req for req in database.eventRequest_List if req and req.get_id()==id][0]
     def get_info_for_event_plan(self, id): return [req.get_all_data() for req in database.eventRequest_List if req and req.get_id()==id][0]
 
     def get_reviews_from_event_request(self, id):
