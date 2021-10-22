@@ -21,9 +21,7 @@ class FmView():
 
             elif key=="test":
                 atributes=[69,"Skynet","Doomsday","nine billion human lifes", 100000, 2022-10-12, 3048-10-12, "Destruction!"]
-                try:eventRequest_control
-                except:eventRequest_control=EventRequest_control()
-                eventRequest_control.create_eventRequest(atributes, assigned2="FM", status="Under review", feasibility_review="Good shit", financial_review="")
+                self.eventRequest_control.create_eventRequest(atributes, assigned2="FM", status="Under review", feasibility_review="Good shit", financial_review="")
         
     def start_view(self):
         clear()
@@ -35,7 +33,6 @@ class FmView():
 
     def show_event_requests(self):
         while True:
-            self.eventRequest_control
 
             clear()
             print("All event requests that are waiting on review")
