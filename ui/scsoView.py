@@ -7,7 +7,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
 from models.eventRequest import EventRequest_control
 from models.eventplanning import *
 from clear import clear 
-import database
 
 class ScsoView():
     def __init__(self):
@@ -47,8 +46,8 @@ class ScsoView():
             if req_id == "0":break
             elif req_id in event_requests:
                 key=input("Enter feasbilty review or [0] to go back: ")
-                if key=="0":pass
-                else:self.eventRequest_control.add_review(id=req_id, review=key)
+                
+                if not key=="0":self.eventRequest_control.add_review(id=req_id, review=key)
         return
     def create_event_plan(self):
         while True:
