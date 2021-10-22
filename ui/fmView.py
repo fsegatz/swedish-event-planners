@@ -1,14 +1,8 @@
-import sys, os
-
-testdir = os.path.dirname(__file__)
-parentdir = '..'
-sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
-
 from models.eventRequest import EventRequest_control
 from clear import clear 
 
 
-class FmView():
+class FinancialManagerView:
     def __init__(self):
         self.eventRequest_control=EventRequest_control()
         while True:
