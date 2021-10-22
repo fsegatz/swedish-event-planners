@@ -1,13 +1,10 @@
 import database
 from ui.stmView import stm_view
 from ui.csoView import cso_view
-<<<<<<< HEAD
 from ui.pmView import pm_view
 from ui.smView import sm_view
-=======
 from ui.scsoView import scso_view
 from ui.fmView import fm_view
->>>>>>> 2885db0 (implemnted func and general refactoring)
 
 def mainView():
 
