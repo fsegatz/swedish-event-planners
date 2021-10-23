@@ -62,32 +62,6 @@ class SubTeamTask_Control:
         self.print_tasklist(tasklist)
         return tasklist
 
-    def create_subteamtask_form(self):
-        clear()
-        print("Please enter folowing subteam task details")
-        event_reference = input("Event reference: ")
-        task_description = input("Description: ")
-        assigned_to = input("Assign to: ")
-
-        while (True):
-            priority = input("Priority (low, medium, high): ")
-            if (priority.lower() == "low"):
-                priority = 1
-            elif (priority.lower() == "medium"):
-                priority = 2
-            elif (priority.lower() == "high"):
-                priority = 3
-            else:
-                print("Only valid priorities are low, medium and high")
-                continue
-            break
-        
-        input("Subteam task request completed! Press enter to send task")
-        subTeamTask = SubTeamTask(event_reference, task_description, priority, database.currentUser.username, assigned_to)
-        database.subTeamTask_List.append(subTeamTask)
-
-        return subTeamTask
-
     def change_subteamtask_comment_form(self, subTeamTask):
         #search for subteamtask in db with same id
         for index, ref in enumerate(database.subTeamTask_List):
