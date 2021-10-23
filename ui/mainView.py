@@ -6,6 +6,7 @@ from ui.smView import ServiceManagerView
 from ui.scsoView import SeniorCustomerServiceOfficerView
 from ui.fmView import FinancialManagerView
 from ui.amView import AdministrationManagerView
+from ui.hrtmView import HumanResourceTeamMemberView
 
 def mainView():
 
@@ -15,9 +16,7 @@ def mainView():
     elif database.currentUser.position=="FM": FinancialManagerView()
     elif database.currentUser.position=="SM": ServiceManagerView()
     elif database.currentUser.position=="PM": ProductionManagerView()
-    elif database.currentUser.position=="HRTM": 
-        #hrtm_view() 
-        pass
+    elif database.currentUser.position=="HRTM": HumanResourceTeamMemberView()
     elif database.currentUser.position=="STM": SubTeamMemberView()
     else: raise NameError('Position has no main view')
     return
