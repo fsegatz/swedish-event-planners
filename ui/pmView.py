@@ -26,13 +26,29 @@ class ProductionManagerView():
         clear()
         subTeamTask_Control = SubTeamTask_Control()
         subTeamTask_Control.create_subteamtask_form()
+        return
 
     def show_current_events(self):
-        clear()
         eventPlanning_Control = EventPlanning_Control()
         eventPlanning_Control.show_current_eventplannings()
-        input('Press enter to return') #temporary before adding functionality
-    
+        
+        while (True):
+            clear()
+            eventPlanningsList = eventPlanning_Control.show_current_eventplannings()
+            if(len(eventPlanningsList) == 0):
+                print("[0] Return")
+                key = input("Please choose option: ")
+                if (key == '0'): break
+            else:
+                print("[0] Return")
+                print("[1] Edit event info")
+                key = input("Please choose option: ")
+                if (key == '0'): break
+                elif (key == '1'): 
+                    eventPlanning = eventPlanning_Control.event_planning_select_from_list(eventPlanningsList)
+                    eventPlanning = eventPlanning_Control.event_planning_info_edit_dialog(eventPlanning)
+        return
+
     def create_staff_request(self):
         self.staffRequest_Control=StaffRequest_Control()
         clear()
@@ -49,3 +65,4 @@ class ProductionManagerView():
         atributes=[contract_type, requesting_department, years_of_experience, job_title, job_description, status]
         self.staffRequest_Control.create_staff_request(atributes)
         input("Event request completed! Press enter to continue")
+        return

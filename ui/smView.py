@@ -30,9 +30,24 @@ class ServiceManagerView:
         self.subTeamTask_Control.create_subteamtask_form()
 
     def show_current_events(self):
-        clear()
-        self.eventPlanning_Control.show_current_eventplannings()
-        input('Press enter to return') #temporary before adding functionality
+        eventPlanning_Control = EventPlanning_Control()
+        
+        while (True):
+            clear()
+            eventPlanningsList = eventPlanning_Control.show_current_eventplannings()
+            if(len(eventPlanningsList) == 0):
+                print("[0] Return")
+                key = input("Please choose option: ")
+                if (key == '0'): break
+            else:
+                print("[0] Return")
+                print("[1] Edit event info")
+                key = input("Please choose option: ")
+                if (key == '0'): break
+                elif (key == '1'): 
+                    eventPlanning = eventPlanning_Control.event_planning_select_from_list(eventPlanningsList)
+                    eventPlanning = eventPlanning_Control.event_planning_info_edit_dialog(eventPlanning)
+        return
 
     def create_staff_request(self):
         self.staffRequest_Control=StaffRequest_Control()
