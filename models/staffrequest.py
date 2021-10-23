@@ -11,7 +11,7 @@ class StaffRequest:
         self.__job_description=atributes[4]
         self.__status=atributes[5]
 
-class StaffRequestControl:
-    def create_staffRequest(self, atributes):
+class StaffRequest_Control:
+    def create_staff_request(self, atributes):
         e=StaffRequest(id=database.id_counter.get_new(), atributes=atributes)
         database.staffRequest_List.append(e)
