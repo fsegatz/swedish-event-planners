@@ -4,5 +4,5 @@ class User():
         self.username=username
         self.password=password
         self.position=position
-    def ChangePassword(self, new_password):
+    def change_password(self, new_password):
         self.password = new_password

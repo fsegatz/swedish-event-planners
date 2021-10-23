@@ -87,16 +87,16 @@ class SubTeamTask_Control:
             break
         
         input("Subteam task request completed! Press enter to send task")
-        subteamTask = SubTeamTask(event_reference, task_description, priority, database.currentUser.username, assigned_to)
-        database.subTeamTask_List.append(subteamTask)
+        subTeamTask = SubTeamTask(event_reference, task_description, priority, database.currentUser.username, assigned_to)
+        database.subTeamTask_List.append(subTeamTask)
 
-        return subteamTask
+        return subTeamTask
 
-    def change_subteamtask_comment_form(self, subteamtask):
+    def change_subteamtask_comment_form(self, subTeamTask):
         #search for subteamtask in db with same id
         for index, ref in enumerate(database.subTeamTask_List):
             buf = database.subTeamTask_List[index]
-            if (subteamtask.id == buf.id):
+            if (subTeamTask.id == buf.id):
                 break
 
         clear()
@@ -131,8 +131,8 @@ class SubTeamTask_Control:
                 return 
             elif (index.isnumeric()):
                 if(int(index) < len(tasklist) ):
-                    subteamtask = tasklist[int(index)]
-                    self.change_subteamtask_comment_form(subteamtask)
+                    subTeamTask = tasklist[int(index)]
+                    self.change_subteamtask_comment_form(subTeamTask)
                 else:
                     print("Index is out of bound")
                     continue
@@ -140,4 +140,4 @@ class SubTeamTask_Control:
                 print("No valid input")
                 continue
             break
-        return subteamtask
+        return subTeamTask

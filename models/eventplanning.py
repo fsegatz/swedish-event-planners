@@ -25,44 +25,44 @@ class EventPlanning:
         return
 
 class EventPlanning_Control:
-    def append(self, eventplanning):
-        eventplanning.id = database.id_counter.get_new()
-        database.eventPlanning_List.append(eventplanning)
+    def append(self, eventPlanning):
+        eventPlanning.id = database.id_counter.get_new()
+        database.eventPlanning_List.append(eventPlanning)
         return
 
-    def print_eventplannings_list(self, eventplannings_list):
+    def print_eventplannings_list(self, eventPlanningsList):
         print("Current Events")
-        if (len(eventplannings_list) == 0):
+        if (len(eventPlanningsList) == 0):
             print("No Event available") 
-        for index, ref in enumerate(eventplannings_list):
-            eventplanning = eventplannings_list[index]
+        for index, ref in enumerate(eventPlanningsList):
+            eventPlanning = eventPlanningsList[index]
             print(
                 "[", index, "] "
-                " | Client name: ", eventplanning.client_name,
-                " | Event type: ", eventplanning.event_type,
-                " | Event description: ", eventplanning.description,
+                " | Client name: ", eventPlanning.client_name,
+                " | Event type: ", eventPlanning.event_type,
+                " | Event description: ", eventPlanning.description,
                 " |\n"
-                " | Date: ", eventplanning.start_date, " - ", eventplanning.end_date,
-                " | Budget: ", eventplanning.planned_budget,
-                " | Attendees: ", eventplanning.expected_attendees,
+                " | Date: ", eventPlanning.start_date, " - ", eventPlanning.end_date,
+                " | Budget: ", eventPlanning.planned_budget,
+                " | Attendees: ", eventPlanning.expected_attendees,
                 " |\n"
-                " | Decoration: ", eventplanning.info_decoration,
-                " | Catering: ", eventplanning.info_catering,
-                " | Documentation: ", eventplanning.info_documentation,
-                " | Music: ", eventplanning.info_music,
-                " | Graphics: ", eventplanning.info_graphic,
-                " | Technical: ", eventplanning.info_technical,
-                " | Other: ", eventplanning.info_other,
+                " | Decoration: ", eventPlanning.info_decoration,
+                " | Catering: ", eventPlanning.info_catering,
+                " | Documentation: ", eventPlanning.info_documentation,
+                " | Music: ", eventPlanning.info_music,
+                " | Graphics: ", eventPlanning.info_graphic,
+                " | Technical: ", eventPlanning.info_technical,
+                " | Other: ", eventPlanning.info_other,
                 " |\n"
                 )
         print("")
         return
 
     def show_current_eventplannings(self):
-        eventplannings_list = []
+        eventPlanningsList = []
         for index, ref in enumerate(database.eventPlanning_List):
-            eventplanning = database.eventPlanning_List[index]
-            if (eventplanning.status != "archived"):
-                eventplannings_list.append(eventplanning)
-        self.print_eventplannings_list(eventplannings_list)
-        return eventplannings_list
+            eventPlanning = database.eventPlanning_List[index]
+            if (eventPlanning.status != "archived"):
+                eventPlanningsList.append(eventPlanning)
+        self.print_eventplannings_list(eventPlanningsList)
+        return eventPlanningsList

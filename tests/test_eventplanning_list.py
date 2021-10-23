@@ -13,7 +13,7 @@ def main():
     database.initialize()
     database.currentUser.username="STM"
 
-    eventplanning_Control = EventPlanning_Control()
+    eventPlanning_Control = EventPlanning_Control()
     for i in range(5):
         client_record_number = "12"
         client_name = "John"
@@ -24,9 +24,9 @@ def main():
         start_date = "2021-12-24 10:00"
         end_date = "2021-12-24 20:00"
         
-        eventplanning_Control.append(EventPlanning(client_record_number, client_name, event_type, description, expected_attendees, planned_budget, start_date, end_date))
+        eventPlanning_Control.append(EventPlanning(client_record_number, client_name, event_type, description, expected_attendees, planned_budget, start_date, end_date))
 
-    eventplanning_Control.show_current_eventplannings()
+    eventPlanning_Control.show_current_eventplannings()
 
     return
 
