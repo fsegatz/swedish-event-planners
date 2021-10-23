@@ -27,6 +27,21 @@ class EventRequest():
         self.__end_date=atributes[6]
         self.__priorities=atributes[7]
 
+    def get_info_as_str(self):
+        return "["+ str(self.__id) +  \
+                "] | Client record number: " + self.__client_record_number +\
+                " | Client name: " + self.__client_name +\
+                " | Event type: " + self.__event_type + \
+                " | Expected number attendees: " + self.__expected_number_attendees +\
+                " | Expected budget: " + self.__expected_budget + \
+                " | Start date: " + self.__start_date + \
+                " | End date: " + self.__end_date + \
+                " | Priorities: " + self.__priorities + \
+                " | Status: " + self.__status + \
+                " |"
+                # " | Feasibility_review: " + self.__feasibility_review + \
+                # " | Financial_review: " + self.__financial_review + \
+
     def get_id(self):return self.__id
     def get_name(self):return self.__id
     def get_status(self): return self.__status
@@ -47,15 +62,23 @@ class EventRequest_Control():
         e.add_info(atributes, assigned2, status, feasibility_review, financial_review)
         database.eventRequest_List.append(e)
 
-    def get_finalized_event_request(self): return [req.get_id() for req in database.eventRequest_List if req and req.get_status()=="Finalized"]
-    def get_event_request_for_user(self): return [req.get_id() for req in database.eventRequest_List if req and req.get_assigned2()==database.currentUser.position]
     def get_event_request_from_id(self,id): return [req for req in database.eventRequest_List if req and req.get_id()==id][0]
     def get_info_for_event_plan(self, id): return [req.get_all_data() for req in database.eventRequest_List if req and req.get_id()==id][0]
+    
+    def get_finalized_event_request(self): return [req.get_id() for req in database.eventRequest_List if req and req.get_status()=="Finalized"]
+    def get_event_request_for_user(self): return [req.get_info_as_str() + "\n" for req in database.eventRequest_List if req and req.get_assigned2()==database.currentUser.position]
+    def get_id_of_event_request_for_user(self): return [req.get_id() for req in database.eventRequest_List if req and req.get_assigned2()==database.currentUser.position]
+
 
     def get_reviews_from_event_request(self, id):
         for req in database.eventRequest_List:
             if req.get_id()==id:
-                return req.get_feasability_review(), req.get_financial_review()
+                info=req.get_info_as_str()
+                if database.currentUser.position=="SCSO":info=info + " Feasibility_review: " + req.get_feasability_review() +" |"
+                elif database.currentUser.position in ["FM","AM"]:
+                    info=info + " Feasibility_review: " + req.get_feasability_review() +\
+                        " | Financial_review: " + req.get_financial_review() +" |"
+                return info
     
     def add_review(self, id, review): 
         request=self.get_event_request_from_id(id)
