@@ -1,9 +1,12 @@
-from models.user import *
 from id_counter import Id_counter
 
 def initialize(): 
     global currentUser 
-    currentUser = User(0, 'default', 'default', 'default')
+    currentUser = None
+
+    #Storage for users
+    global user_List
+    user_List = []
 
     #Counter to ensure new id to all instances
     global id_counter
