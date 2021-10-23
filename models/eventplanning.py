@@ -26,11 +26,7 @@ class EventPlanning:
 
 class EventPlanning_Control:
     def append(self, eventplanning):
-        length = len(database.eventPlanning_List)
-        if (length == 0):
-            eventplanning.id = 1
-        else:
-            eventplanning.id = database.eventPlanning_List[length-1].id + 1
+        eventplanning.id = database.id_counter.get_new()
         database.eventPlanning_List.append(eventplanning)
         return
 
