@@ -40,6 +40,17 @@ class FinancialManagerView:
 
     def show_current_financial_requests(self): 
         self.financialRequest_Control=FinancialRequest_Control()
-        clear()
-        print(*self.financialRequest_Control.get_current_financial_request(),end="")
-        input()
+        while True:
+            clear()
+            print("All financial requests that are waiting on review")
+            print(*self.financialRequest_Control.get_str_financial_requests())
+
+            req_id=input("Press id of financial request to review or [0] to go back: ")
+            if req_id == "0": break
+            elif req_id in self.financialRequest_Control.get_id_of_financial_request_for_user():
+                clear()
+                print(self.financialRequest_Control.get_str_financial_request_from_id(id=req_id))
+                key=input("\nEnter financial review or [0] to go back: \n")
+                if not key=="0": self.financialRequest_Control.add_review(id=req_id, review=key)
+        return
+
