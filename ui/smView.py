@@ -2,6 +2,7 @@ from clear import clear
 from models.subteamtask import *
 from models.eventplanning import *
 from models.staffrequest import StaffRequest_Control
+from models.financialrequest import FinancialRequest_Control
 
 class ServiceManagerView:
     def __init__(self):
@@ -16,12 +17,15 @@ class ServiceManagerView:
             print("[1] Create subteam task")
             print("[2] Show current events")
             print("[3] Create staff request")
+            print("[4] Create financial request")
             
             key = input("Please choose key: ")
             if (key == '0'): break
             elif (key == '1'): self.create_subteam_task()
             elif (key == '2'): self.show_current_events()
             elif key == "3": self.create_staff_request()
+            elif key == "4": self.create_financial_request()
+
 
         return
 
@@ -65,3 +69,19 @@ class ServiceManagerView:
         atributes=[contract_type, requesting_department, years_of_experience, job_title, job_description, status]
         self.staffRequest_Control.create_staff_request(atributes)
         input("Event request completed! Press enter to continue")
+
+    def create_financial_request(self):
+        self.financialRequest_Control=FinancialRequest_Control()
+        clear()
+        print("Please enter folowing financial request details")
+
+        event_reference = input("Event reference: ") #do some check if there is event with that id and loop
+        requesting_department = input("Requesting department: ")
+        required_amount = input("Required amount: ")
+        reason = input("Reason: ")
+        comment = input("Comment: ")
+        status = "opened"
+
+        atributes=[event_reference, requesting_department, required_amount, reason, comment, status]
+        self.financialRequest_Control.create_financial_request(atributes)
+        input("Financial request completed! Press enter to continue")
