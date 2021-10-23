@@ -57,12 +57,10 @@ class EventPlanning_Control:
                 )
         return
 
+    def get_current_eventplannings(self): return [eventPlanning for eventPlanning in database.eventPlanning_List if eventPlanning and eventPlanning.status!="archived"]
+
     def show_current_eventplannings(self):
-        eventPlanningsList = []
-        for index, ref in enumerate(database.eventPlanning_List):
-            eventPlanning = database.eventPlanning_List[index]
-            if (eventPlanning.status != "archived"):
-                eventPlanningsList.append(eventPlanning)
+        eventPlanningsList = self.get_current_eventplannings()
         self.print_eventplannings_list(eventPlanningsList)
         return eventPlanningsList
 
