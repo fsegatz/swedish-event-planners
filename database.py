@@ -20,3 +20,7 @@ def initialize():
     #Storage for event plannings
     global eventPlanning_List
     eventPlanning_List = []
+
+    #Storage for staff requests
+    global staffRequest_List
+    staffRequest_List = []
