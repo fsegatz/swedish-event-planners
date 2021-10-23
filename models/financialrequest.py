@@ -12,6 +12,6 @@ class FinancialRequest:
         self.__status=atributes[5]
 
 class FinancialRequest_Control:
-    def create_staff_request(self, atributes):
+    def create_financial_request(self, atributes):
         e=FinancialRequest(id=database.id_counter.get_new(), atributes=atributes)
         database.financialRequest_List.append(e)
