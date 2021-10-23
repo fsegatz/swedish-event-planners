@@ -1,15 +1,17 @@
+from ui.userView import UserView
 from models.eventrequest import EventRequest_Control
 from models.eventplanning import *
 from clear import clear 
 
-class SeniorCustomerServiceOfficerView:
+class SeniorCustomerServiceOfficerView(UserView):
     def __init__(self):
         self.eventRequest_Control=EventRequest_Control()
         self.eventPlanning_Control=EventPlanning_Control()
 
         while True:
             clear()
-            print("Senior Customer Support Officer Main View")
+            self.print_username()
+            print("Senior Customer Service Officer Main View")
             print("------------------------")
             print("[0] Logout")
             print("[1] Show Event Request to review")

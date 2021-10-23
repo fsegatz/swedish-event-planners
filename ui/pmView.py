@@ -1,13 +1,15 @@
+from ui.userView import UserView
 from clear import clear
 from models.eventplanning import EventPlanning_Control
 from models.staffrequest import StaffRequest_Control
 from models.financialrequest import FinancialRequest_Control
 from models.subteamtask import *
 
-class ProductionManagerView():
+class ProductionManagerView(UserView):
     def __init__(self):
         while(True):
             clear()
+            self.print_username()
             print("Production Manager Main View")
             print("------------------------")
             print("[0] Logout")

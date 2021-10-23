@@ -1,16 +1,18 @@
+from ui.userView import UserView
 from clear import clear
 from models.subteamtask import *
 from models.eventplanning import *
 from models.staffrequest import StaffRequest_Control
 from models.financialrequest import FinancialRequest_Control
 
-class ServiceManagerView:
+class ServiceManagerView(UserView):
     def __init__(self):
         self.subTeamTask_Control = SubTeamTask_Control()
         self.eventPlanning_Control = EventPlanning_Control()
         
         while(True):
             clear()
+            self.print_username()
             print("Service Manager Main View")
             print("------------------------")
             print("[0] Logout")
