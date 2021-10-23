@@ -9,7 +9,7 @@ parentdir = '..'
 sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
 
 import database
-from models.eventRequest import *
+from models.eventrequest import *
 
 def main():
     database.initialize()

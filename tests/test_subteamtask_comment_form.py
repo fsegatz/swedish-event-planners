@@ -1,8 +1,6 @@
 # User Story
 #  "Any subteam member should be able to access a form similar to the subteam task form. This form should allow them to write a comment to the task."
 
-from datetime import datetime
-
 # Needed to import rom parent directory
 import sys, os
 testdir = os.path.dirname(__file__)

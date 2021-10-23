@@ -4,7 +4,7 @@ testdir = os.path.dirname(__file__)
 parentdir = '..'
 sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
 
-from models.eventRequest import *
+from models.eventrequest import *
 import database
 
 database.initialize()

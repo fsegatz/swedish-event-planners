@@ -1,4 +1,4 @@
-from models.eventRequest import EventRequest_control
+from models.eventrequest import EventRequest_control
 from clear import clear
 
 class CustomerServiceOfficerView:
