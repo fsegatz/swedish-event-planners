@@ -24,3 +24,7 @@ def initialize():
     #Storage for staff requests
     global staffRequest_List
     staffRequest_List = []
+
+    #Storage for financial requests
+    global financialRequest_List
+    financialRequest_List = []
