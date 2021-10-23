@@ -1,12 +1,15 @@
 from models.eventrequest import EventRequest_Control
+from ui.userView import UserView
+from models.user import User
 from clear import clear 
 
 
-class FinancialManagerView:
+class FinancialManagerView(UserView):
     def __init__(self):
         self.eventRequest_Control=EventRequest_Control()
         while True:
             clear()
+            self.print_username()
             print("Financial Manager Main View")
             print("------------------------")
             print("[0] Logout")

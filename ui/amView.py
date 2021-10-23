@@ -1,11 +1,13 @@
+from ui.userView import UserView
 from models.eventrequest import EventRequest_Control
 from clear import clear 
 
-class AdministrationManagerView:
+class AdministrationManagerView(UserView):
     def __init__(self):
         self.eventRequest_Control=EventRequest_Control()
         while True:
             clear()
+            self.print_username()
             print("Administration Manager Main View")
             print("------------------------")
             print("[0] Logout")

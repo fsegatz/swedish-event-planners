@@ -1,14 +1,16 @@
+from ui.userView import UserView
 from models.staffrequest import StaffRequest_Control
 from models.staffrequest import StaffRequest
 from clear import clear
 import database
 
-class HumanResourceTeamMemberView:
+class HumanResourceTeamMemberView(UserView):
     def __init__(self):
         self.staffRequest_Control= StaffRequest_Control()
         
         while(True):
             clear()
+            self.print_username()
             print("Human Resource Team Member Main View")
             print("------------------------")
             print("[0] Logout")

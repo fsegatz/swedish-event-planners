@@ -1,10 +1,13 @@
+from models.user import User
+from ui.userView import UserView
 from clear import clear
 from models.subteamtask import *
 
-class SubTeamMemberView:
+class SubTeamMemberView(UserView):
     def __init__(self):
         while(True):
             clear()
+            self.print_username()
             print("SubTeam Member Main View")
             print("------------------------")
             print("[0] Logout")
