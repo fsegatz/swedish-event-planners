@@ -91,26 +91,42 @@ class EventPlanning_Control:
         eventPlanningList = []
         eventPlanningList.append(eventPlanning)
 
-        while(True):
-            clear()
-            self.print_eventplannings_list(eventPlanningList)
-            print("[0] Return")
-            print("[1] Edit decoration info")
-            print("[2] Edit catering info")
-            print("[3] Edit documentation info")
-            print("[4] Edit music info")
-            print("[5] Edit graphics info")
-            print("[6] Edit technical info")
-            key = input("Please choose option: ")
-            if (key == '0'): break
-            if ((not key.isnumeric()) or int(key) > 6): 
-                continue
-            comment = input("Please enter comment: ")
-            if (key == '1'): database.eventPlanning_List[index].info_decoration = comment
-            elif (key == '2'): database.eventPlanning_List[index].info_catering = comment
-            elif (key == '3'): database.eventPlanning_List[index].info_documentation = comment
-            elif (key == '4'): database.eventPlanning_List[index].info_music = comment
-            elif (key == '5'): database.eventPlanning_List[index].info_graphics = comment
-            elif (key == '6'): database.eventPlanning_List[index].info_technical = comment
+        if(database.currentUser.position == 'SM'):
+            while(True):
+                clear()
+                self.print_eventplannings_list(eventPlanningList)
+                print("[0] Return")
+                print("[1] Edit catering info")
+                print("[2] Edit other info")
+                key = input("Please choose option: ")
+                if (key == '0'): break
+                if ((not key.isnumeric()) or int(key) > 6): 
+                    continue
+                comment = input("Please enter comment: ")
+                if (key == '1'): database.eventPlanning_List[index].info_catering = comment
+                elif (key == '2'): database.eventPlanning_List[index].info_other = comment
         
+        elif(database.currentUser.position == 'PM'):
+            while(True):
+                clear()
+                self.print_eventplannings_list(eventPlanningList)
+                print("[0] Return")
+                print("[1] Edit decoration info")
+                print("[2] Edit documentation info")
+                print("[3] Edit music info")
+                print("[4] Edit graphics info")
+                print("[5] Edit technical info")
+                print("[6] Edit other info")
+                key = input("Please choose option: ")
+                if (key == '0'): break
+                if ((not key.isnumeric()) or int(key) > 6): 
+                    continue
+                comment = input("Please enter comment: ")
+                if (key == '1'): database.eventPlanning_List[index].info_decoration = comment
+                elif (key == '2'): database.eventPlanning_List[index].info_documentation = comment
+                elif (key == '3'): database.eventPlanning_List[index].info_music = comment
+                elif (key == '4'): database.eventPlanning_List[index].info_graphics = comment
+                elif (key == '5'): database.eventPlanning_List[index].info_technical = comment
+                elif (key == '6'): database.eventPlanning_List[index].info_other = comment
+
         return
