@@ -12,6 +12,7 @@ class ProductionManagerView():
             print("[0] Logout")
             print("[1] Create subteam task")
             print("[2] Show current events")
+            print("[3] Create staff request")
 
             key = input("Please choose option: ")
             if(key == '0'): break
