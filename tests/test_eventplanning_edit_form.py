@@ -14,8 +14,6 @@ import database
 def main():
     database.initialize()
 
-    login()
-
     eventPlanning_Control = EventPlanning_Control()
     
     for i in range(5):

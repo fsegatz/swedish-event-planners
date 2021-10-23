@@ -105,7 +105,8 @@ class EventPlanning_Control:
             print("[6] Edit technical info")
             key = input("Please choose option: ")
             if (key == '0'): break
-            
+            if ((not key.isnumeric()) or int(key) > 6): 
+                continue
             comment = input("Please enter comment: ")
             if (key == '1'): database.eventPlanning_List[index].info_decoration = comment
             elif (key == '2'): database.eventPlanning_List[index].info_catering = comment
