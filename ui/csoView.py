@@ -5,20 +5,18 @@ class CustomerServiceOfficerView:
     def __init__(self):
         self.eventRequest_control=EventRequest_control()
         while True:
-            key=self.start_view()
-
-            if key=="1":self.create_event_request()
-                
-            elif key=="2": return
-
-    def start_view(self): 
-        clear()
-        print("Customer Service Officer Main View")
-        print("------------------------")
-        print("[1] Create Event Request")
-        print("[2] Logout")
-        return input()
-
+            clear()
+            print("Customer Service Officer Main View")
+            print("------------------------")
+            print("[0] Logout")
+            print("[1] Create Event Request")
+            
+            key = input()
+            if key=="0": break
+            elif key=="1":self.create_event_request()
+        return
+            
+            
     def create_event_request(self):
         clear()
         print("Please enter folowing details about the Request")

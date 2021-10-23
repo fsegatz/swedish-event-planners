@@ -11,8 +11,8 @@ class SubTeamMemberView:
             print("[1] Show SubTeamTasks List")
 
             key = input()
-            if key == '0': break
-            elif key == '1': self.start_subteamtask_dialog()
+            if (key == '0'): break
+            elif (key == '1'): self.start_subteamtask_dialog()
 
         return
 
@@ -25,14 +25,11 @@ class SubTeamMemberView:
             if(len(tasklist) == 0):
                 print("[0] Return")
                 key = input("Please choose option: ")
-                if key == '0': 
-                    break
+                if (key == '0'): break
             else:
                 print("[0] Return")
                 print("[1] Comment on subteam task")
                 key = input("Please choose option: ")
-                if key == '0' :
-                    break
-                elif key == '1' :
-                    subTeamTask_Control.select_subteamtask_from_tasklist_to_comment(tasklist)
+                if (key == '0'): break
+                elif (key == '1'): subTeamTask_Control.select_subteamtask_from_tasklist_to_comment(tasklist)
         return

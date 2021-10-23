@@ -6,25 +6,20 @@ import time
 class ProductionManagerView():
     def __init__(self):
         while(True):
-            key = self.start_view()
+            clear()
+            print("Production Manager Main View")
+            print("------------------------")
+            print("[0] Logout")
+            print("[1] Create subteam task")
+            print("[2] Show current events")
 
+            key = input("Please choose option: ")
             if(key == '0'): break
-
             if(key == '1'): self.create_subteam_task()
-
             if(key == '2'): self.show_current_events()
             
         return
 
-    def start_view(self):
-        clear()
-        print("Production Manager Main View")
-        print("------------------------")
-        print("[0] Logout")
-        print("[1] Create subteam task")
-        print("[2] Show current events")
-        return input("Please choose option: ")
-        
     def create_subteam_task(self):
         clear()
         subTeamTask_Control = SubTeamTask_Control()
