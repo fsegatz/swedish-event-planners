@@ -1,10 +1,10 @@
-from models.eventRequest import EventRequest_control
+from models.eventrequest import EventRequest_Control
 from models.eventplanning import *
 from clear import clear 
 
 class SeniorCustomerServiceOfficerView:
     def __init__(self):
-        self.eventRequest_control=EventRequest_control()
+        self.eventRequest_Control=EventRequest_Control()
         self.eventPlanning_Control=EventPlanning_Control()
 
         while True:
@@ -22,33 +22,33 @@ class SeniorCustomerServiceOfficerView:
 
             elif (key=="test"):
                 atributes=[69,"Skynet","Doomsday","nine billion human lifes", 100000, 2022-10-12, 3048-10-12, "Destruction!"]
-                self.eventRequest_control.create_eventRequest(atributes)
+                self.eventRequest_Control.create_event_request(atributes)
         return
 
     def show_event_requests(self):
         while True:
             clear()
             print("All event requests that are waiting on review")
-            event_requests=self.eventRequest_control.get_event_request_for_user()
-            print(*event_requests)
+            eventRequests=self.eventRequest_Control.get_event_request_for_user()
+            print(*eventRequests)
 
             req_id=input("Press id of event request to review or [0] to go back: ")
             if req_id == "0":break
-            elif req_id in event_requests:
+            elif req_id in eventRequests:
                 key=input("Enter feasbilty review or [0] to go back: ")
-                if not key=="0":self.eventRequest_control.add_review(id=req_id, review=key)
+                if not key=="0":self.eventRequest_Control.add_review(id=req_id, review=key)
         return
 
     def create_event_plan(self):
         while True:
             clear()
             print("All finalized event requests")
-            event_requests=self.eventRequest_control.get_finalized_event_request()
-            print(*event_requests)
+            eventRequests=self.eventRequest_Control.get_finalized_event_request()
+            print(*eventRequests)
 
             req_id=input("Press id of event request to create event plan from or press [0] to go back: ")
             if req_id == "0": break
-            elif req_id in event_requests:
+            elif req_id in eventRequests:
                 clear()
                 print("Are you sure that you want to create event plan from event request " + req_id + " it will not be possible to undo")
                 print("[1] Yes, create event plan")
@@ -56,9 +56,9 @@ class SeniorCustomerServiceOfficerView:
 
                 key=input("")
                 if (key=="1"):
-                    event_request_data=self.eventRequest_control.get_info_for_event_plan(id=req_id)
-                    self.eventRequest_control.archived_event_request(id=req_id)
+                    event_request_data=self.eventRequest_Control.get_info_for_event_plan(id=req_id)
+                    self.eventRequest_Control.archived_event_request(id=req_id)
 
-                    eventplanning=EventPlanning(event_request_data[0], event_request_data[1], event_request_data[2], event_request_data[3], event_request_data[4], event_request_data[5], event_request_data[6], event_request_data[7])
-                    self.eventPlanning_Control.append(eventplanning)
+                    eventPlanning=EventPlanning(event_request_data[0], event_request_data[1], event_request_data[2], event_request_data[3], event_request_data[4], event_request_data[5], event_request_data[6], event_request_data[7])
+                    self.eventPlanning_Control.append(eventPlanning)
         return

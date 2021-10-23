@@ -1,9 +1,9 @@
-from models.eventRequest import EventRequest_control
+from models.eventrequest import EventRequest_Control
 from clear import clear
 
 class CustomerServiceOfficerView:
     def __init__(self):
-        self.eventRequest_control=EventRequest_control()
+        self.eventRequest_Control = EventRequest_Control()
         while True:
             clear()
             print("Customer Service Officer Main View")
@@ -32,7 +32,6 @@ class CustomerServiceOfficerView:
         atributes=[client_record_number, client_name, event_type, expected_number_attendees, \
         expected_budget, start_date, end_date, priorities]
 
-
-        self.eventRequest_control.create_eventRequest(atributes)
+        self.eventRequest_Control.create_event_request(atributes)
         
         input("Event request completed! Press enter to continue")

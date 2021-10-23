@@ -1,8 +1,6 @@
 # User Story
 #  "Any subteam member should be able to access a form similar to the subteam task form. This form should allow them to write a comment to the task."
 
-from datetime import datetime
-
 # Needed to import rom parent directory
 import sys, os
 testdir = os.path.dirname(__file__)
@@ -27,11 +25,11 @@ def main():
     database.currentUser.username="STM"
     tasklist = subTeamTask_Control.show_subteamtasks_for_currentuser()
 
-    subteamtask = subTeamTask_Control.select_subteamtask_from_tasklist_to_comment(tasklist)
+    subTeamTask = subTeamTask_Control.select_subteamtask_from_tasklist_to_comment(tasklist)
 
-    if (subteamtask != None):
+    if (subTeamTask != None):
         # login as user who subteamtask was assigned to
-        database.currentUser.username = subteamtask.assigned_to
+        database.currentUser.username = subTeamTask.assigned_to
         print("\nLogin as user who subteamtak was assigned to: ", database.currentUser.username, "\n")
         subTeamTask_Control.show_subteamtasks_for_currentuser()
         

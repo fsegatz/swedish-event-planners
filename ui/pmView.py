@@ -1,7 +1,6 @@
 from clear import clear
 from models.eventplanning import EventPlanning_Control
 from models.subteamtask import *
-import time
 
 class ProductionManagerView():
     def __init__(self):

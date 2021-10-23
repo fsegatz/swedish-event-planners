@@ -1,7 +1,6 @@
 from clear import clear
 from models.subteamtask import *
 from models.eventplanning import *
-import time
 
 class ServiceManagerView:
     def __init__(self):

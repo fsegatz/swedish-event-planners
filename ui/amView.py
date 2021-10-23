@@ -1,9 +1,9 @@
-from models.eventRequest import EventRequest_control
+from models.eventrequest import EventRequest_Control
 from clear import clear 
 
 class AdministrationManagerView:
     def __init__(self):
-        self.eventRequest_control=EventRequest_control()
+        self.eventRequest_Control=EventRequest_Control()
         while True:
             clear()
             print("Administration Manager Main View")
@@ -16,7 +16,7 @@ class AdministrationManagerView:
             elif (key=="1"): self.show_event_request_to_finalize()
             elif (key=="test"):
                 atributes=[69,"Skynet","Doomsday","nine billion human lifes", 100000, 2022-10-12, 3048-10-12, "Destruction!"]
-                self.eventRequest_control.create_eventRequest(atributes, assigned2="AM", status="Under review", feasibility_review="Good shit", financial_review="Noice!")
+                self.eventRequest_Control.create_event_request(atributes, assigned2="AM", status="Under review", feasibility_review="Good shit", financial_review="Noice!")
         return
 
     def show_event_request_to_finalize(self):
@@ -24,26 +24,26 @@ class AdministrationManagerView:
 
             clear()
             print("All event requests that are waiting on finalize/reject")
-            event_requests=self.eventRequest_control.get_event_request_for_user()
-            print(*event_requests)
+            eventRequests=self.eventRequest_Control.get_event_request_for_user()
+            print(*eventRequests)
             req_id=input("Press id of event request to finalize/reject or [0] to go back: ")
             if req_id == "0":break
-            elif req_id in event_requests:
+            elif req_id in eventRequests:
                 while True:
                     key = self.finalize_or_reject_view(req_id)
                     if (key=="0"): pass
                     elif (key=="1"): 
-                        self.eventRequest_control.finalize_event_request(id=req_id)
+                        self.eventRequest_Control.finalize_event_request(id=req_id)
                     elif (key=="2"):
                         key=self.reject_confirm(req_id)
-                        if (key=="1"): self.eventRequest_control.reject_event_request(id=req_id)
+                        if (key=="1"): self.eventRequest_Control.reject_event_request(id=req_id)
                     else: continue
                     break
 
     def finalize_or_reject_view(self,req_id):
         clear()
         print("Event request " + req_id )
-        feasabilty_review, financial_review = self.eventRequest_control.get_reviews_from_event_request(id=req_id)
+        feasabilty_review, financial_review = self.eventRequest_Control.get_reviews_from_event_request(id=req_id)
         print("Financial review: " + financial_review)
         print("")
         print("[0] Go back")

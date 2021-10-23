@@ -18,10 +18,10 @@ def main():
 
     subTeamTask_Control = SubTeamTask_Control()
 
-    subteamtask = subTeamTask_Control.create_subteamtask_form()
+    subTeamTask = subTeamTask_Control.create_subteamtask_form()
 
     # login as user who subteamtask was assigned to
-    database.currentUser.username = subteamtask.assigned_to
+    database.currentUser.username = subTeamTask.assigned_to
     print("\nLogin as user who subteamtak was assigned to: ", database.currentUser.username, "\n")
     subTeamTask_Control.show_subteamtasks_for_currentuser()
     

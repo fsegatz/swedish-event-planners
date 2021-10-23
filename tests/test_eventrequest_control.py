@@ -4,7 +4,7 @@ testdir = os.path.dirname(__file__)
 parentdir = '..'
 sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
 
-from models.eventRequest import *
+from models.eventrequest import *
 import database
 
 database.initialize()
@@ -14,8 +14,8 @@ database.currentUser.password = 123
 database.currentUser.position = 'SCSO'
 
 atributes=[1,"Skynet","Doomsday","nine billion", 100000, 2022-10-12, 3048-10-12, "Destruction!", "Open"]
-eventRequest_control=EventRequest_control()
-eventRequest_control.create_eventRequest(atributes)
+eventRequest_Control=EventRequest_Control()
+eventRequest_Control.create_event_request(atributes)
 
 
-print(*eventRequest_control.get_event_request_for_user())
+print(*eventRequest_Control.get_event_request_for_user())

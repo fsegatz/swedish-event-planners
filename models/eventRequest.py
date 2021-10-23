@@ -41,8 +41,8 @@ class EventRequest():
     def set_assigned2(self, user): self.__assigned2=user
     def set_status(self, status): self.__status=status
 
-class EventRequest_control():
-    def create_eventRequest(self,atributes, assigned2="SCSO", status="Under review", feasibility_review="", financial_review=""):
+class EventRequest_Control():
+    def create_event_request(self,atributes, assigned2="SCSO", status="Under review", feasibility_review="", financial_review=""):
         e=EventRequest(database.id_counter.get_new())
         e.add_info(atributes, assigned2, status, feasibility_review, financial_review)
         database.eventRequest_List.append(e)
