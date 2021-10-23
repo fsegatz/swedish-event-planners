@@ -20,11 +20,7 @@ class SubTeamTask_Control:
         pass
 
     def append(self, subTeamTask):
-        length = len(database.subTeamTask_List)
-        if (length == 0):
-            subTeamTask.id = 1
-        else:
-            subTeamTask.id = database.subTeamTask_List[length-1].id + 1
+        subTeamTask.id = database.id_counter.get_new()
         database.subTeamTask_List.append(subTeamTask)
         return
 
