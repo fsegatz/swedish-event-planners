@@ -14,10 +14,11 @@ class SubTeamTask:
         self.assigned_to=assigned_to
         self.comment= ""
         self.status= "new"      #<--status can be [new; commented]
+        return
 
 class SubTeamTask_Control:
     def __init__(self):
-        pass
+        return
 
     def append(self, subTeamTask):
         subTeamTask.id = database.id_counter.get_new()
@@ -53,16 +54,11 @@ class SubTeamTask_Control:
         print("")
         return
 
-    def get_subteamtasks_for_user(self, user):
-        tasklist = []
-        for index, ref in enumerate(database.subTeamTask_List):
-            subTeamTask = database.subTeamTask_List[index]
-            if (subTeamTask.assigned_to == user.username):
-                tasklist.append(subTeamTask)
-        return tasklist
+    def get_subteamtasks_for_user(self, user): return [subTeamTask for subTeamTask in database.subTeamTask_List if subTeamTask and subTeamTask.assigned_to == user.username]
+    def get_subteamtasks_for_currentuser(self): return self.get_subteamtasks_for_user(database.currentUser)
 
     def show_subteamtasks_for_currentuser(self):
-        tasklist = self.get_subteamtasks_for_user(database.currentUser)
+        tasklist = self.get_subteamtasks_for_currentuser()
         self.print_tasklist(tasklist)
         return tasklist
 
