@@ -66,3 +66,9 @@ class EventPlanning_Control:
                 eventPlanningsList.append(eventPlanning)
         self.print_eventplannings_list(eventPlanningsList)
         return eventPlanningsList
+
+    def event_planning_select_from_list(self, eventPlanningsList):
+        return
+
+    def event_planning_info_edit_dialog(self, eventPlanning):
+        return
