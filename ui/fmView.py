@@ -16,7 +16,7 @@ class FinancialManagerView:
             if (key=="0"): break
             elif (key=="1"): self.show_event_requests()
             elif (key=="test"):
-                atributes=[69,"Skynet","Doomsday","nine billion human lifes", 100000, 2022-10-12, 3048-10-12, "Destruction!"]
+                atributes=["69","Skynet","Doomsday","nine billion human lifes", "100000", "2022-10-12", "3048-10-12", "Destruction!"]
                 self.eventRequest_Control.create_event_request(atributes, assigned2="FM", status="Under review", feasibility_review="Good shit", financial_review="")
         return
 
@@ -24,11 +24,13 @@ class FinancialManagerView:
         while True:
             clear()
             print("All event requests that are waiting on review")
-            eventRequests=self.eventRequest_Control.get_event_request_for_user()
-            print(*eventRequests)
+            print(*self.eventRequest_Control.get_event_request_for_user())
+
             req_id=input("Press id of event request to review or [0] to go back: ")
             if req_id == "0": break
-            elif req_id in eventRequests:
-                key=input("Enter financial review or [0] to go back: ")
+            elif req_id in self.eventRequest_Control.get_id_of_event_request_for_user():
+                clear()
+                print(self.eventRequest_Control.get_reviews_from_event_request(id=req_id))
+                key=input("\nEnter financial review or [0] to go back: \n")
                 if not key=="0": self.eventRequest_Control.add_review(id=req_id, review=key)
         return

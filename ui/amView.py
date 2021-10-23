@@ -15,7 +15,7 @@ class AdministrationManagerView:
             if (key=="0"): break
             elif (key=="1"): self.show_event_request_to_finalize()
             elif (key=="test"):
-                atributes=[69,"Skynet","Doomsday","nine billion human lifes", 100000, 2022-10-12, 3048-10-12, "Destruction!"]
+                atributes=["69","Skynet","Doomsday","nine billion human lifes", "100000", "2022-10-12", "3048-10-12", "Destruction!"]
                 self.eventRequest_Control.create_event_request(atributes, assigned2="AM", status="Under review", feasibility_review="Good shit", financial_review="Noice!")
         return
 
@@ -24,11 +24,11 @@ class AdministrationManagerView:
 
             clear()
             print("All event requests that are waiting on finalize/reject")
-            eventRequests=self.eventRequest_Control.get_event_request_for_user()
-            print(*eventRequests)
+            print(*self.eventRequest_Control.get_event_request_for_user())
+
             req_id=input("Press id of event request to finalize/reject or [0] to go back: ")
             if req_id == "0":break
-            elif req_id in eventRequests:
+            elif req_id in self.eventRequest_Control.get_id_of_event_request_for_user():
                 while True:
                     key = self.finalize_or_reject_view(req_id)
                     if (key=="0"): pass
@@ -42,9 +42,7 @@ class AdministrationManagerView:
 
     def finalize_or_reject_view(self,req_id):
         clear()
-        print("Event request " + req_id )
-        feasabilty_review, financial_review = self.eventRequest_Control.get_reviews_from_event_request(id=req_id)
-        print("Financial review: " + financial_review)
+        print(self.eventRequest_Control.get_reviews_from_event_request(id=req_id))
         print("")
         print("[0] Go back")
         print("[1] Finalize event request")
