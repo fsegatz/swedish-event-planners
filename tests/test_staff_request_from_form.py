@@ -13,11 +13,11 @@ def main():
     database.initialize()
 
     ServiceManagerView().create_staff_request() #start with enter 0
-    if database.staffRequest_List: print("it worked with ServiceManagerView!")
-    else: print("it did not work with ServiceManagerView!! :,(")
+    if database.staffRequest_List: input("it worked with ServiceManagerView!")
+    else: input("it did not work with ServiceManagerView!! :,(")
 
     ProductionManagerView().create_staff_request() #start with enter 0
-    if database.staffRequest_List: print("it worked with ProductionManagerView!")
-    else: print("it did not work with ProductionManagerView!! :,(")
+    if database.staffRequest_List: input("it worked with ProductionManagerView!")
+    else: input("it did not work with ProductionManagerView!! :,(")
 
 main()
