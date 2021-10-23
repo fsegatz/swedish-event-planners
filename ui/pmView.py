@@ -91,5 +91,5 @@ class ProductionManagerView():
     def show_current_financial_requests(self): 
         self.financialRequest_Control=FinancialRequest_Control()
         clear()
-        print(*self.financialRequest_Control.get_current_financial_request(),end="")
+        print(*self.financialRequest_Control.get_str_financial_requests(),end="")
         input()
