@@ -1,3 +1,4 @@
+from models.financialrequest import FinancialRequest_Control
 from models.eventrequest import EventRequest_Control
 from clear import clear 
 
@@ -11,10 +12,12 @@ class FinancialManagerView:
             print("------------------------")
             print("[0] Logout")
             print("[1] Show Event Request to review")
+            print("[2] Show current financial request")
             
             key = input()
             if (key=="0"): break
             elif (key=="1"): self.show_event_requests()
+            elif key == "2": self.show_current_financial_requests()
             elif (key=="test"):
                 atributes=["69","Skynet","Doomsday","nine billion human lifes", "100000", "2022-10-12", "3048-10-12", "Destruction!"]
                 self.eventRequest_Control.create_event_request(atributes, assigned2="FM", status="Under review", feasibility_review="Good shit", financial_review="")
@@ -34,3 +37,9 @@ class FinancialManagerView:
                 key=input("\nEnter financial review or [0] to go back: \n")
                 if not key=="0": self.eventRequest_Control.add_review(id=req_id, review=key)
         return
+
+    def show_current_financial_requests(self): 
+        self.financialRequest_Control=FinancialRequest_Control()
+        clear()
+        print(*self.financialRequest_Control.get_current_financial_request(),end="")
+        input()

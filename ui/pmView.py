@@ -15,7 +15,7 @@ class ProductionManagerView():
             print("[2] Show current events")
             print("[3] Create staff request")
             print("[4] Create financial request")
-
+            print("[5] Show current financial request")
 
             key = input("Please choose option: ")
             if(key == '0'): break
@@ -23,6 +23,7 @@ class ProductionManagerView():
             elif(key == '2'): self.show_current_events()
             elif (key== "3"): self.create_staff_request()
             elif key == "4": self.create_financial_request()
+            elif key == "5": self.show_current_financial_requests()
 
         return
 
@@ -86,3 +87,9 @@ class ProductionManagerView():
         atributes=[event_reference, requesting_department, required_amount, reason, comment, status]
         self.financialRequest_Control.create_financial_request(atributes)
         input("Financial request completed! Press enter to continue")
+
+    def show_current_financial_requests(self): 
+        self.financialRequest_Control=FinancialRequest_Control()
+        clear()
+        print(*self.financialRequest_Control.get_current_financial_request(),end="")
+        input()
