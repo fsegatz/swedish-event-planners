@@ -1,6 +1,6 @@
 import database
 from datetime import datetime
-
+from clear import clear
 
 class EventPlanning:
     def __init__(self, client_record_number, client_name, event_type, description, expected_attendees, planned_budget, start_date, end_date):
@@ -55,7 +55,6 @@ class EventPlanning_Control:
                 " | Other: ", eventPlanning.info_other,
                 " |\n"
                 )
-        print("")
         return
 
     def show_current_eventplannings(self):
@@ -68,7 +67,51 @@ class EventPlanning_Control:
         return eventPlanningsList
 
     def event_planning_select_from_list(self, eventPlanningsList):
-        return
+        eventPlanning = None
+        clear()
+        self.print_eventplannings_list(eventPlanningsList)
+
+        while(True):
+
+            key = input("Enter index of subteam task that should be commented, or c to cancel: ")
+            if (key.lower() == 'c'): break
+            elif (key.isnumeric() and int(key) < len(eventPlanningsList)):
+                eventPlanning = eventPlanningsList[int(key)]
+                break
+            else: print("No valid input")
+
+        return eventPlanning
 
     def event_planning_info_edit_dialog(self, eventPlanning):
+        #search for event planning in db with same id
+        for index, ref in enumerate(database.eventPlanning_List):
+            buf = database.eventPlanning_List[index]
+            if (eventPlanning.id == buf.id):
+                break
+            
+        # Add event to a list, so that print_eventplannings_list function can be reused
+        eventPlanningList = []
+        eventPlanningList.append(eventPlanning)
+
+        while(True):
+            clear()
+            self.print_eventplannings_list(eventPlanningList)
+            print("[0] Return")
+            print("[1] Edit decoration info")
+            print("[2] Edit catering info")
+            print("[3] Edit documentation info")
+            print("[4] Edit music info")
+            print("[5] Edit graphics info")
+            print("[6] Edit technical info")
+            key = input("Please choose option: ")
+            if (key == '0'): break
+            
+            comment = input("Please enter comment: ")
+            if (key == '1'): database.eventPlanning_List[index].info_decoration = comment
+            elif (key == '2'): database.eventPlanning_List[index].info_catering = comment
+            elif (key == '3'): database.eventPlanning_List[index].info_documentation = comment
+            elif (key == '4'): database.eventPlanning_List[index].info_music = comment
+            elif (key == '5'): database.eventPlanning_List[index].info_graphics = comment
+            elif (key == '6'): database.eventPlanning_List[index].info_technical = comment
+        
         return

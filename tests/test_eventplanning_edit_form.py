@@ -17,6 +17,7 @@ def main():
     login()
 
     eventPlanning_Control = EventPlanning_Control()
+    
     for i in range(5):
         client_record_number = "12"
         client_name = "John"
