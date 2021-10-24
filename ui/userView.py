@@ -87,3 +87,9 @@ class UserView:
         clear()
         print(*self.financialRequest_Control.get_str_financial_requests(),end="")
         input()
+
+    def show_current_staff_requests(self): 
+        self.staffRequest_Control=StaffRequest_Control()
+        clear()
+        print(*self.staffRequest_Control.get_str_staff_requests(),end="")
+        input()
