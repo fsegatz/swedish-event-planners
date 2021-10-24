@@ -65,32 +65,34 @@ class SubTeamMemberView(UserView):
     def change_subteamtask_comment_form(self, subTeamTask):
         subTeamTask_Control = SubTeamTask_Control()
 
-        subTeamTask_List = []
-        #search for subteamtask in db with same id
-        for index, ref in enumerate(database.subTeamTask_List):
-            buf = database.subTeamTask_List[index]
-            if (subTeamTask.id == buf.id):
-                break
         
-        subTeamTask_List.append(subTeamTask)
-
+        #search for subteamtask in db with same id
+        index = subTeamTask_Control.get_index_of_subteamtask_with_id(subTeamTask.id)
+        
         clear()
+
+        subTeamTask_List = []
+        subTeamTask_List.append(subTeamTask)
         subTeamTask_Control.print_tasklist(subTeamTask_List)
+
         print("Subteam task comment form.")
         while(True):
-            database.subTeamTask_List[index].comment = input("Please enter comment: ")
-            while(True):
-                done = input("Is comment correct? (y/n)")
-                if (done.lower() == "y"):
-                    done = "y"
-                elif (done.lower() == "n"):
-                    done = "n"
-                else:
-                   print("Only valid priorities are y (Yes) and n (No)")
-                   continue 
+            comment = input("Please enter comment: ")
+            if(self.verify_input()):
                 break
-            if(done == "n"):
-                continue
-            break
-        database.subTeamTask_List[index].status == "commented"
+
+        subTeamTask_Control.set_comment_of_subteamtask_with_id(subTeamTask.id, comment)
         return
+
+    def verify_input(self):
+        while(True):
+            key = input("Is input correct? (y/n)")
+            if (key.lower() == "y"):
+                done = True
+            elif (key.lower() == "n"):
+                done = False
+            else:
+               print("Only valid priorities are y (Yes) and n (No)")
+               continue 
+            break
+        return done

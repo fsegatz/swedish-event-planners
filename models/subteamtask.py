@@ -57,6 +57,19 @@ class SubTeamTask_Control:
     def get_subteamtasks_for_user(self, user): return [subTeamTask for subTeamTask in database.subTeamTask_List if subTeamTask and subTeamTask.assigned_to == user.username]
     def get_subteamtasks_for_currentuser(self): return self.get_subteamtasks_for_user(database.currentUser)
 
+    def get_index_of_subteamtask_with_id(self, id): 
+        for index, ref in enumerate(database.subTeamTask_List):
+            buf = database.subTeamTask_List[index]
+            if (id == buf.id):
+                break
+        return index
+
+    def set_comment_of_subteamtask_with_id(self, id, comment):
+        index = self.get_index_of_subteamtask_with_id(id)
+        database.subTeamTask_List[index].comment = comment
+        database.subTeamTask_List[index].status == "commented"
+        return
+
     def show_subteamtasks_for_currentuser(self):
         tasklist = self.get_subteamtasks_for_currentuser()
         self.print_tasklist(tasklist)
