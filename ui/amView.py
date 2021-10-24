@@ -22,25 +22,25 @@ class AdministrationManagerView(UserView):
         return
 
     def show_event_request_to_finalize(self):
-         while True:
+        while True:
 
             clear()
             print("All event requests that are waiting on finalize/reject")
             print(*self.eventRequest_Control.get_event_request_for_user())
 
             req_id=input("Press id of event request to finalize/reject or [0] to go back: ")
-            if req_id == "0":break
+            if req_id == "0": break
+
             elif req_id in self.eventRequest_Control.get_id_of_event_request_for_user():
                 while True:
                     key = self.finalize_or_reject_view(req_id)
+                    if (not self.verify_input()): continue
                     if (key=="0"): pass
-                    elif (key=="1"): 
-                        self.eventRequest_Control.finalize_event_request(id=req_id)
-                    elif (key=="2"):
-                        key=self.reject_confirm(req_id)
-                        if (key=="1"): self.eventRequest_Control.reject_event_request(id=req_id)
+                    elif (key=="1"): self.eventRequest_Control.finalize_event_request(id=req_id)
+                    elif (key=="2"): self.eventRequest_Control.reject_event_request(id=req_id)
                     else: continue
                     break
+        return
 
     def finalize_or_reject_view(self,req_id):
         clear()
@@ -51,9 +51,9 @@ class AdministrationManagerView(UserView):
         print("[2] Reject event request")
         return input("")
 
-    def reject_confirm(self,req_id):
-        clear()
-        print("Are you sure that you want reject event request " + req_id + " it will not be possible to get back")
-        print("[1] Yes, reject this event request")
-        print("[2] No, do not reject")
-        return input("")
+    # def reject_confirm(self,req_id):
+    #     clear()
+    #     print("Are you sure that you want reject event request " + req_id + " it will not be possible to get back")
+    #     print("[1] Yes, reject this event request")
+    #     print("[2] No, do not reject")
+    #     return input("")
