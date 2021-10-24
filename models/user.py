@@ -10,6 +10,10 @@ class User:
         self.password = new_password
 
 class User_Control:
+    def __init__(self):
+        database.currentUser = User(0, 'default', 'default', 'default')
+        return
+        
     def create_user(self, user):
         database.user_List.append(user)
         return
