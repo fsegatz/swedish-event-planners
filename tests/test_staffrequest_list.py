@@ -8,6 +8,7 @@ from models.staffrequest import *
 import database
 from ui.hrtmView import *
 from ui.pmView import *
+from ui.smView import *
 
 
 def main():
@@ -25,7 +26,10 @@ def main():
     database.staffRequest_List.append(req2)
     database.staffRequest_List.append(req3)
 
-    HumanResourceTeamMemberView().show_current_staff_requests() #start with enter 0
+    HumanResourceTeamMemberView()
+    ServiceManagerView() 
+    ProductionManagerView() 
+
 
 
 main()

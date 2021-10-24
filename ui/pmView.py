@@ -16,16 +16,18 @@ class ProductionManagerView(UserView):
             print("[1] Create subteam task")
             print("[2] Show current events")
             print("[3] Create staff request")
-            print("[4] Create financial request")
-            print("[5] Show current financial request")
+            print("[4] Show current staff request")
+            print("[5] Create financial request")
+            print("[6] Show current financial request")
 
             key = input("Please choose option: ")
             if(key == '0'): break
             elif(key == '1'): self.create_subteam_task()
             elif(key == '2'): self.show_current_events()
             elif (key== "3"): self.create_staff_request()
-            elif key == "4": self.create_financial_request()
-            elif key == "5": self.show_current_financial_requests()
+            elif key == "4": self.show_current_staff_requests()
+            elif key == "5": self.create_financial_request()
+            elif key == "6": self.show_current_financial_requests()
 
         return
 
