@@ -59,74 +59,24 @@ class EventPlanning_Control:
 
     def get_current_eventplannings(self): return [eventPlanning for eventPlanning in database.eventPlanning_List if eventPlanning and eventPlanning.status!="archived"]
 
+    def get_index_of_eventplanning_with_id(self, id): 
+        for index, ref in enumerate(database.eventPlanning_List):
+            buf = database.eventPlanning_List[index]
+            if (id == buf.id):
+                break
+        return index
+
+    def set_comment_of_eventplanning_with_id(self, id, comment_type, comment):
+        index = self.get_index_of_eventplanning_with_id(id)
+        if (comment_type == "decoration"): database.eventPlanning_List[index].info_decoration = comment
+        elif (comment_type == "documentation"): database.eventPlanning_List[index].info_documentation = comment
+        elif (comment_type == "music"): database.eventPlanning_List[index].info_music = comment
+        elif (comment_type == "graphic"): database.eventPlanning_List[index].info_graphic = comment
+        elif (comment_type == "technical"): database.eventPlanning_List[index].info_technical = comment
+        elif (comment_type == "other"): database.eventPlanning_List[index].info_other = comment
+        return
+
     def show_current_eventplannings(self):
         eventPlanningsList = self.get_current_eventplannings()
         self.print_eventplannings_list(eventPlanningsList)
         return eventPlanningsList
-
-    def event_planning_select_from_list(self, eventPlanningsList):
-        eventPlanning = None
-        clear()
-        self.print_eventplannings_list(eventPlanningsList)
-
-        while(True):
-
-            key = input("Enter index of subteam task that should be commented, or c to cancel: ")
-            if (key.lower() == 'c'): break
-            elif (key.isnumeric() and int(key) < len(eventPlanningsList)):
-                eventPlanning = eventPlanningsList[int(key)]
-                break
-            else: print("No valid input")
-
-        return eventPlanning
-
-    def event_planning_info_edit_dialog(self, eventPlanning):
-        #search for event planning in db with same id
-        for index, ref in enumerate(database.eventPlanning_List):
-            buf = database.eventPlanning_List[index]
-            if (eventPlanning.id == buf.id):
-                break
-            
-        # Add event to a list, so that print_eventplannings_list function can be reused
-        eventPlanningList = []
-        eventPlanningList.append(eventPlanning)
-
-        if(database.currentUser.position == 'SM'):
-            while(True):
-                clear()
-                self.print_eventplannings_list(eventPlanningList)
-                print("[0] Return")
-                print("[1] Edit catering info")
-                print("[2] Edit other info")
-                key = input("Please choose option: ")
-                if (key == '0'): break
-                if ((not key.isnumeric()) or int(key) > 6): 
-                    continue
-                comment = input("Please enter comment: ")
-                if (key == '1'): database.eventPlanning_List[index].info_catering = comment
-                elif (key == '2'): database.eventPlanning_List[index].info_other = comment
-        
-        elif(database.currentUser.position == 'PM'):
-            while(True):
-                clear()
-                self.print_eventplannings_list(eventPlanningList)
-                print("[0] Return")
-                print("[1] Edit decoration info")
-                print("[2] Edit documentation info")
-                print("[3] Edit music info")
-                print("[4] Edit graphics info")
-                print("[5] Edit technical info")
-                print("[6] Edit other info")
-                key = input("Please choose option: ")
-                if (key == '0'): break
-                if ((not key.isnumeric()) or int(key) > 6): 
-                    continue
-                comment = input("Please enter comment: ")
-                if (key == '1'): database.eventPlanning_List[index].info_decoration = comment
-                elif (key == '2'): database.eventPlanning_List[index].info_documentation = comment
-                elif (key == '3'): database.eventPlanning_List[index].info_music = comment
-                elif (key == '4'): database.eventPlanning_List[index].info_graphics = comment
-                elif (key == '5'): database.eventPlanning_List[index].info_technical = comment
-                elif (key == '6'): database.eventPlanning_List[index].info_other = comment
-
-        return

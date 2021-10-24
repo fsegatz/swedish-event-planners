@@ -65,10 +65,6 @@ class SubTeamMemberView(UserView):
     def change_subteamtask_comment_form(self, subTeamTask):
         subTeamTask_Control = SubTeamTask_Control()
 
-        
-        #search for subteamtask in db with same id
-        index = subTeamTask_Control.get_index_of_subteamtask_with_id(subTeamTask.id)
-        
         clear()
 
         subTeamTask_List = []
