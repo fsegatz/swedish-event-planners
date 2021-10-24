@@ -6,8 +6,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
 from models.staffrequest import *
 import database
 
-
-
 def main():
     database.initialize()
 

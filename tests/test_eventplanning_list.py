@@ -1,17 +1,22 @@
 #User Story:
 # "A ProductionManager and ServiceManager should be able to access a list of event plannings. "
 
+## !!! not working !! ##
+
 import sys, os
 testdir = os.path.dirname(__file__)
 parentdir = '..'
 sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
 
+from models.user import User_Control
 from models.eventplanning import *
 import database
 
 def main():
     database.initialize()
-    database.currentUser.username="STM"
+    user_Control = User_Control()
+    user_Control.fill_user_database()
+    user_Control.login("STM", "123")
 
     eventPlanning_Control = EventPlanning_Control()
     for i in range(5):

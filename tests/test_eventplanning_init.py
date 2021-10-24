@@ -1,3 +1,5 @@
+## !!! not working !! ##
+
 import sys, os
 
 testdir = os.path.dirname(__file__)
@@ -6,14 +8,14 @@ sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
 
 from models.eventrequest import EventRequest_Control
 from models.eventplanning import *
-from clear import clear 
+from models.user import User_Control
+
 import database
 
 database.initialize()
-database.currentUser.id = 2
-database.currentUser.username = "AM"
-database.currentUser.password = "123"
-database.currentUser.position = 'AM'
+user_Control = User_Control()
+user_Control.fill_user_database()
+user_Control.login("AM", "123")
 
 eventRequest_Control=EventRequest_Control()
 

@@ -1,18 +1,22 @@
 # User Story
 #  "A ProductionManager and ServiceManager should be able to access event plannings and edit their respective sections through an event planning form."
 
-# Needed to import rom parent directory
+## !!! not working !! ##
+
+# Needed to import from parent directory
 import sys, os
 testdir = os.path.dirname(__file__)
 parentdir = '..'
 sys.path.insert(0, os.path.abspath(os.path.join(testdir, parentdir)))
 
 from models.eventplanning import *
-from ui.login import login
+from models.user import User_Control
 import database
 
 def main():
     database.initialize()
+    user_Control = User_Control()
+    user_Control.fill_user_database()
 
     eventPlanning_Control = EventPlanning_Control()
     
