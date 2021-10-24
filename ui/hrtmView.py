@@ -26,7 +26,25 @@ class HumanResourceTeamMemberView(UserView):
                 database.staffRequest_List.append(req)
         return
     def show_current_staff_requests(self): 
-        clear()
-        print(*self.staffRequest_Control.get_current_staff_request(),end="")
-        input()
+        self.staffRequest_Control=StaffRequest_Control()
+        while True:
+            clear()
+            print("All staff requests that are waiting on review")
+            print(*self.staffRequest_Control.get_str_staff_requests())
+
+            req_id=input("Press id of staff request to review or [0] to go back: ")
+            if req_id == "0": break
+            elif req_id in self.staffRequest_Control.get_id_of_staff_request_for_user():
+                clear()
+                print(self.staffRequest_Control.get_str_staff_request_from_id(id=req_id))
+
+                key=input("\nChange staff request status (Opened/Rejected/In progress/Archived) or [0] to go back: \n")
+                while key not in ["Opened", "Rejected", "In progress" ,"Archived" , "0"]:
+                    clear()
+                    print(self.staffRequest_Control.get_str_staff_request_from_id(id=req_id))
+                    print("Unvalid input, valid inputs are Opened, Rejected, In progress or Archived")
+                    key=input("\nPlease enter valid input or [0] to go back: \n")
+                if not key=="0": self.staffRequest_Control.add_status(id=req_id, status=key)
+        return
         
+
