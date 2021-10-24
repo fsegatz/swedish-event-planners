@@ -31,6 +31,7 @@ class HumanResourceTeamMemberView(UserView):
         while True:
             clear()
             print("All staff requests that are waiting on review")
+            print(" ",end="")
             print(*self.staffRequest_Control.get_str_staff_requests())
 
             req_id=input("Press id of staff request to review or [0] to go back: ")
