@@ -79,16 +79,3 @@ class SubTeamMemberView(UserView):
 
         subTeamTask_Control.set_comment_of_subteamtask_with_id(subTeamTask.id, comment)
         return
-
-    def verify_input(self):
-        while(True):
-            key = input("Is input correct? (y/n)")
-            if (key.lower() == "y"):
-                done = True
-            elif (key.lower() == "n"):
-                done = False
-            else:
-               print("Only valid priorities are y (Yes) and n (No)")
-               continue 
-            break
-        return done

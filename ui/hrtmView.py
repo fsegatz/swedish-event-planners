@@ -25,6 +25,7 @@ class HumanResourceTeamMemberView(UserView):
                 req=StaffRequest(database.id_counter.get_new(),atributes)
                 database.staffRequest_List.append(req)
         return
+    
     def show_current_staff_requests(self): 
         clear()
         print(*self.staffRequest_Control.get_current_staff_request(),end="")

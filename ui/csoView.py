@@ -17,8 +17,7 @@ class CustomerServiceOfficerView(UserView):
             if key=="0": break
             elif key=="1":self.create_event_request()
         return
-            
-            
+ 
     def create_event_request(self):
         clear()
         print("Please enter folowing details about the Request")
