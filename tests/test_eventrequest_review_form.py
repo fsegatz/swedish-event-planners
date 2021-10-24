@@ -3,7 +3,7 @@
 # an event request through a form (similar to the event request form, but only 
 # with the option to edit the feasibility_review resp. financial_review attribute"
 
-# Needed to import rom parent directory
+# Needed to import from parent directory
 import sys, os
 testdir = os.path.dirname(__file__)
 parentdir = '..'

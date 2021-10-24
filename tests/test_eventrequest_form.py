@@ -1,7 +1,7 @@
 #Description 
 #"A CustomerServiceOfficer should be able to create a new event request through a form."
 
-# Needed to import rom parent directory
+# Needed to import from parent directory
 import sys, os
 testdir = os.path.dirname(__file__)
 parentdir = '..'

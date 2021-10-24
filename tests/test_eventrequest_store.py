@@ -2,7 +2,7 @@
 # expected_number_attendees. expected_budget, start_date, end_date, priorities, feasibility_review, financial_review, status)."
 #from models.eventRequest import EventRequest
 
-# Needed to import rom parent directory
+# Needed to import from parent directory
 import sys, os
 testdir = os.path.dirname(__file__)
 parentdir = '..'

@@ -4,7 +4,7 @@
 # planned_budget, start_date, end_date, info_decoration, info_catering, info_documentation, info_music, 
 # info_graphic, info_technical, info_other, feasibility_review, financial_review, status)."
 
-# Needed to import rom parent directory
+# Needed to import from parent directory
 import sys, os
 testdir = os.path.dirname(__file__)
 parentdir = '..'
