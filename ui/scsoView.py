@@ -31,6 +31,7 @@ class SeniorCustomerServiceOfficerView(UserView):
         while True:
             clear()
             print("All event requests that are waiting on review")
+            print(" ",end="")
             print(*self.eventRequest_Control.get_event_request_for_user())
 
             req_id=input("Press id of event request to review or [0] to go back: ")

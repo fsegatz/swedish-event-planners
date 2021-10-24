@@ -26,6 +26,7 @@ class AdministrationManagerView(UserView):
 
             clear()
             print("All event requests that are waiting on finalize/reject")
+            print(" ",end="")
             print(*self.eventRequest_Control.get_event_request_for_user())
 
             req_id=input("Press id of event request to finalize/reject or [0] to go back: ")
